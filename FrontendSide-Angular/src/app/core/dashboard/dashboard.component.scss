@@ -1,0 +1,159 @@
+//.main-body {
+//  //background-color: #f4f4f4;
+//  height: 100vh;
+//  padding-top: 5px;
+//}
+
+//===============================================================
+
+em {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Layout */
+.s-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.s-layout__content {
+  flex: 1;
+}
+
+/* Sidebar */
+.s-sidebar__trigger {
+  z-index: 2;
+  top:0;
+  left: 0;
+  position: fixed;
+  padding-right: 20px;
+  height: 4em;
+  background: #192b3c;
+}
+
+.s-sidebar__trigger > i {
+  display: inline-block;
+  margin: 1.5em 0 0 1.5em;
+  color: #f07ab0;
+}
+
+.s-sidebar__nav {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 15px;
+  transition: all .3s ease-in;
+  width: 15em;
+  height: 100%;
+  background: #fb5d54;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.s-sidebar__nav:hover,
+.s-sidebar__nav:focus,
+.s-sidebar__trigger:focus + .s-sidebar__nav,
+.s-sidebar__trigger:hover + .s-sidebar__nav {
+  left: 0;
+}
+
+.s-sidebar__nav ul {
+  position: absolute;
+  top: 4em;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 15em;
+}
+
+.s-sidebar__nav ul li {
+  width: 100%;
+}
+
+.s-sidebar__nav-link {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 2em;
+}
+
+.s-sidebar__nav-link em {
+  position: absolute;
+  top: 50%;
+  left: 4em;
+  transform: translateY(-50%);
+}
+
+.s-sidebar__nav-link:hover {
+  background: #4d6276;
+}
+
+.s-sidebar__nav-link > i {
+  position: absolute;
+  display: inline-block;
+  height: 2em;
+}
+
+.s-sidebar__nav-link > i::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Mobile First */
+@media (min-width: 42em) {
+  .s-layout__content {
+    margin-left: 4em;
+  }
+
+  /* Sidebar */
+  .s-sidebar__trigger {
+    width: 4em;
+  }
+
+  .s-sidebar__nav {
+    width: 4em;
+    right: 0;
+  }
+
+  .s-sidebar__nav:hover,
+  .s-sidebar__nav:focus,
+  .s-sidebar__trigger:hover + .s-sidebar__nav,
+  .s-sidebar__trigger:focus + .s-sidebar__nav {
+    width: 15em;
+  }
+}
+
+@media (min-width: 68em) {
+  .s-layout__content {
+    margin-left: 15em;
+  }
+
+  /* Sidebar */
+  .s-sidebar__trigger {
+    display: none
+  }
+
+  .s-sidebar__nav {
+    width: 15em;
+  }
+
+  .s-sidebar__nav ul {
+    top: 1.3em;
+  }
+}
+
+.panel-body {
+  background-color: white;
+  height: 90vh;
+}
+
+.panel-header {
+  height: 10vh;
+}

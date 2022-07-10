@@ -1,0 +1,265 @@
+<div class="container">
+    <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+    <div class="card my-2">
+        <div class="card-body px-4">
+            <div class="row">
+                <div class="col-md-9">
+                    <h4 class="mb-4">Upload a Presentation</h4>
+                    <form [formGroup]="form">
+                        <div class="form-group">
+                            <label for="title">
+                Title of the Paper <small>(required)</small></label
+              >
+              <!-- <input
+                type="text"
+                class="form-control"
+                id="title"
+                formControlName="title"
+                name="title"
+                [(ngModel)]="uploadPresentation.title"
+                placeholder="Please, write the title of the paper here."
+              /> -->
+
+              <div class="ng-autocomplete">
+                <ng-autocomplete
+                  [data]="data"
+                  [searchKeyword]="keyword"
+                  (selected)="selectEvent($event)"
+                  (inputChanged)="onChangeSearch($event)"
+                  (inputFocused)="onFocused($event)"
+                  [itemTemplate]="itemTemplate"
+                  [notFoundTemplate]="notFoundTemplate"
+                  [(ngModel)]="uploadPresentation.title"
+                  formControlName="title"
+                  name="title"
+                  id="title"
+                >
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                  <a [innerHTML]="item.title"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
+            </div>
+            {{ question.title }}
+            <div class="form-group">
+              <label for="body"> Description <small>(required)</small> </label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="body" formControlName="body" name="body" [(ngModel)]="uploadPresentation.body" placeholder="Please, write the description of the paper here(max 250 characters)."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">
+                Journal/Conference <small>(optional)</small>
+              </label>
+                            <input type="text" class="form-control" id="name" formControlName="name" name="name" [(ngModel)]="uploadPresentation.name" placeholder="Please, write the journal/conference of the paper here." />
+                        </div>
+                        <div class="form-group">
+                            <label for="yearOfPaper">
+                Year of the Paper <small>(optional)</small>
+              </label>
+                            <input type="date" class="form-control" id="yearOfPaper" formControlName="yearOfPaper" name="yearOfPaper" [(ngModel)]="uploadPresentation.yearOfPaper" placeholder="Please, write the year of the paper here." [max]="getToday()" />
+                        </div>
+                        <div class="form-group">
+                            <label for="firstAuthorName">
+                First Author's Name <small>(optional)</small>
+              </label>
+                            <input type="text" class="form-control" id="firstAuthorName" formControlName="firstAuthorName" name="firstAuthorName" [(ngModel)]="uploadPresentation.firstAuthorName" placeholder="Please, write the first author name of the paper here." />
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-checkbox" style="display: flex">
+                                <div>
+                                    <input type="checkbox" id="authorCheck" formControlName="authorCheck" [(ngModel)]="uploadPresentation.authorCheck" name="authorCheck" />
+                                </div>
+                                <div>
+                                    <label for="iAmTheAuthor">
+                    &nbsp; I am the author <small>(optional)</small>
+                  </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="!uploadedFilePath">
+                            <label for="presentationLink">Presentation Link </label>
+                            <input type="text" class="form-control" id="presentationLink" formControlName="presentationLink" name="presentationLink" [(ngModel)]="uploadPresentation.presentationLink" placeholder="Please, write the presentation link of the paper here." />
+                            <!-- <i
+                class="fa fa-spin fa-spinner btn-loading-bar"
+                *ngIf="loading"
+              ></i> -->
+                        </div>
+                        <div class="form-group">
+                            <label for=""> Upload a Presentation</label>
+
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input [disabled]="uploadPresentation.presentationLink" type="file" class="custom-file-input" id="uploadedFilePath" accept="video/mp4,video/x-m4v,video/*" (change)="onChange($event)" />
+                                    <label class="custom-file-label" for="uploadedFilePath">Choose file <small>(Max size is 50mb)</small
+                    ><i
+                      class="fa fa-spin fa-spinner btn-loading-bar"
+                      *ngIf="loading"
+                    ></i
+                  ></label>
+                                </div>
+                            </div>
+                            {{ uploadedFileName }}
+                        </div>
+                        <div class="form-group">
+                            <div *ngIf="showTags">
+                                <label for=""> Tags<small>(required)</small> </label>
+                                <div class="input-group mb-3">
+                                    <ng-select style="width: 70%" (change)="setTag($event)" [items]="tagList" [multiple]="true" name="gfdfsdf" formControlName="selectedTagList" [(ngModel)]="selectedTagList" bindLabel="title" bindValue="id" [placeholder]="'Choose the related tags'"></ng-select>
+                                    <button type="button" style="margin-left: 1em" class="btn btn-save createTagBtn" data-toggle="modal" data-target="#tagModal">
+                    <i class="fa fa-plus"></i>
+                    Create tag
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="text-right mt-5 mb-4">
+              <button type="submit" class="btn btn-danger float-none mr-3">
+                cancel
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary float-none"
+                (click)="submit()"
+                [disabled]="loading"
+              >
+                Save
+                <i
+                  class="fa fa-spin fa-spinner btn-loading-bar"
+                  *ngIf="loading"
+                ></i>
+              </button>
+            </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-muted d-flex justify-content-center my-3">
+        <button type="button" class="btn btn-save-lighter questionPreviewbtn" (click)="questionPreview()">
+      Preview Your Request&emsp;>
+    </button>
+    </div>
+</div>
+
+<!-- Modal Preview -->
+<div class="modal fade bd-example-modal-lg" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Request Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="color-primary font-weight-bold pl-2">
+                    {{ uploadPresentation.title }}
+                </h3>
+
+                <!-- <div id="questionName" style="margin-left: 1rem; color: #7B7B7B" class="question-body pl-3"></div>
+                <div id="questionYearOfPaper" style="margin-left: 2rem; color: #7B7B7B" class="question-body pl-3"></div>
+                <div id="questionAuthorName" style="margin-left: 1rem; color: #7B7B7B" class="question-body pl-3"></div>
+                <div *ngIf="uploadedFileName" id="questionUploadedFileName" style="margin-left: 5rem; color: #7B7B7B" class="question-body pl-3"></div>
+                <div id="questionUtubeLink" style="margin-left: 2rem; color: #7B7B7B" class="question-body pl-3"></div> -->
+
+                <table class="ml-4">
+                    <tr>
+                        <td>Journal/Conference</td>
+                        <td class="ml-3">
+                            {{ this.uploadPresentation.name ? this.uploadPresentation.name : "" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Year of the Paper</td>
+                        <td class="ml-3">
+                            {{ this.uploadPresentation.yearOfPaper ? this.uploadPresentation.yearOfPaper : "" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>First Author's Name</td>
+                        <td class="ml-3">
+                            {{ this.uploadPresentation.firstAuthorName ? this.uploadPresentation.firstAuthorName : "" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>I am Author</td>
+                        <td class="ml-3">
+                            {{ this.uploadPresentation.authorCheck ? "Yes" : "No" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>File Name</td>
+                        <td class="ml-3">
+                            {{ this.uploadedFileName ? this.uploadedFileName : "" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Presentation Link</td>
+                        <td class="ml-3">
+                            {{ this.uploadPresentation.presentationLink ? this.uploadPresentation.presentationLink : "" }}
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="mt-3 ml-1">
+                    <b>Description:</b>
+                    <div class="d-flex flex-row align-items-center" style="justify-content: center" *ngIf="showBody">
+                        <div id="questionBody" class="question-body pl-2"></div>
+
+                        <!-- <p class="question-status font-weight-bold color-green" ng-if="question.questionStatus === 'WITHPRESENTATION'">
+                        With Presentation
+                    </p> -->
+                    </div>
+                </div>
+
+                <div class="col-sm12 md-3 form-inline mt-2">
+                    <ng-container *ngFor="let tag of uploadPresentation.tagList">
+                        <p class="tag bk-color-primary">{{ tag.title }}</p>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closeQuestionModal" data-dismiss="modal">
+          Close
+        </button>
+                <button type="button" class="btn btn-save bk-color-primary" (click)="submit()" [disabled]="loading">
+          Save
+          <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+        </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="tagModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tagModalLabel">Creating Tag</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="tag title" name="tag" id="tag" (keydown.enter)="createTag()" [(ngModel)]="tag.title" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+                <button type="button" class="btn btn-save bk-color-primary" (click)="createTag()">
+          Save
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

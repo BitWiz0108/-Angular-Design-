@@ -1,0 +1,71 @@
+<div class="my-container">
+  <div class="row">
+    <div class="column">
+      <form [formGroup]="form" class="box-border">
+          <h2 class="text-center font-weight-bold mt-3 mb-5">Login</h2>
+        <small class="form-text text-center text-danger" *ngIf="wrongAccount">Username or password is incorrect.</small>
+
+        <div class="form-group">
+            <label class="control-label" for="username">
+              Username
+            </label>
+            <div class="input-group">
+              <i class=" fa-2x fa fa-user input-group-addon">
+              </i>
+            <input type="email" class="form-control" id="username" name="username" aria-describedby="emailHelp"
+                 placeholder="username(email)" [(ngModel)]="signInModel.username" formControlName="username"
+                 [ngClass]="{'is-valid': (form.controls['username'].valid && form.controls['username'].touched),
+                  'is-invalid' : ((signInClicked|| form.controls['username'].touched) && form.controls['username'].invalid)}"
+                  (keydown.enter)="signIn()">
+            </div>
+          <small class="form-text text-muted" *ngIf="(signInClicked || form.controls['username'].touched) &&
+           form.controls['username'].hasError('required')">Please enter your email.</small>
+          <small class="form-text text-muted" *ngIf="(signInClicked || form.controls['username'].touched) &&
+           form.controls['username'].hasError('pattern')">Please enter your email in the right pattern.</small>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="password">
+            Password
+          </label>
+          <div class="input-group">
+            <i class=" fa-2x fa fa-lock input-group-addon">
+            </i>
+          <input type="password" class="form-control" id="password" name="password" placeholder="password"
+                 [(ngModel)]="signInModel.password" formControlName="password"
+                 [ngClass]="{'is-valid': (form.controls['password'].valid && form.controls['password'].touched),
+                  'is-invalid' : ((signInClicked|| form.controls['password'].touched) && form.controls['password'].invalid)}"
+                 (keydown.enter)="signIn()">
+          </div>
+          <div class="d-flex flex-row-reverse justify-content-between">
+            <div class="row">
+              <a class="form-text text-center text-info forget-password-btn" type="button" [routerLink]="['/auth/signUp']" [queryParams]="{codeType: codeType.FORGET_PASSWORD}">Forget password</a>            </div>
+            <small class="form-text text-muted" *ngIf="(signInClicked || form.controls['password'].touched) &&
+            form.controls['password'].hasError('required')">Please Enter your password</small>
+            <small class="form-text text-muted" *ngIf="(signInClicked || form.controls['password'].touched) &&
+            form.controls['password'].hasError('pattern')">Please Enter your password in the right pattern.</small>
+            
+        </div>
+        </div>
+        <div class="loginBtn mt-5">
+          <button type="button" class="btn btn-success w-100" (click)="signIn()" [disabled]="loading">Login
+            <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+          </button>
+        </div>
+        <div class="mt-2 text-center">
+          Or
+          <a class="text-center color-primary font-weight-bold" [routerLink]="['/auth/signUp']" [queryParams]="{codeType: codeType.SIGNUP}"
+               type="button"> Sign up</a>
+        </div>
+        <div class="mt-5 text-center">
+          by clicking on login you have accepted our
+          <br/>
+          <a class="color-primary font-weight-bold" (click)="openModal('privacy-policy-modal')">
+            privacy policy
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

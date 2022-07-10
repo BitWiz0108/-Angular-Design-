@@ -1,0 +1,77 @@
+<div class="container question-list">
+
+    <div class="justify-content-center row" id="myItems">
+        <div class="loading-box" *ngIf="loading">
+            <i class="fa fa-spin fa-spinner fa-3x"></i>
+        </div>
+
+        <div class="col-sm-12 mb-3" *ngIf="!loading">
+
+
+
+            <ng-container *ngIf="reportList && reportList.length">
+                <div class="card" *ngFor="let item of reportList ">
+                    <!--      <div class="card" *ngFor="let item of questionList; let i=index">-->
+                    <div class="cursor-pointer question-box" (click)="navigate(item)">
+                        <div class="d-flex flex-row ">
+                            <p class="status " [ngClass]="item.questionStatus=='WITHPRESENTATION' ? 'bg-success' : 'bg-danger' ">
+                                {{ item.questionStatus === "WITHPRESENTATION" ? "With Presentation" : item.questionStatus === "NOPRESENTATIONYET" ? "No Presentation Yet" : "Closed" }}
+                            </p>
+                            <div class="d-flex flex-row ml-2 mt-1 ">
+                                <i class="fa color-bale fa-eye "></i>
+                                <p class="fa color-bale ">{{item.seen}}</p>
+                            </div>
+                            <div class="ml-auto p-2 color-bale ">
+                                {{item.systemCreationDate | date}}
+                            </div>
+
+                        </div>
+                        <div>
+                            <p class="pl-3 font-weight-bold color-primary ">{{item.title}}</p>
+                        </div>
+                        <div>
+                            <div class="col-sm12 md-3 form-inline ">
+                                <ng-container *ngFor="let tag of item.tagList ">
+                                    <p class="tag pl-3 pr-3 ">{{tag.title}}</p>
+                                </ng-container>
+                                <div class="d-flex flex-row ml-auto color-bale ">
+                                    <i class="fa fa-thumbs-up "></i>
+                                    <p class="mb-0 mr-4 likes ">{{item.usefulCount}}</p>
+                                    <p class="mb-0 mr-4 ">by {{item.creatorDisplayName}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </ng-container>
+        </div>
+
+
+        <!-- 
+        <div class="loading-box " *ngIf="!loading && !reportList.length ">
+            <p class="alert-dark p-2 ">
+                <ng-container>
+                    Sorry. We found no result.
+                </ng-container>
+                <ng-template #withOutTerm> Sorry. We found no result. </ng-template>
+            </p>
+        </div> -->
+
+
+        <!-- <div class="has-text-centered color-bale font-weight-bold " *ngIf="reportList && reportList.length ">
+            <div class="spinner " [ngClass]="{ 'hidden': !loading } "></div>
+            <pagination-controls [id]="config.id " [previousLabel]=" 'Previous' " [nextLabel]=" 'Next' " [screenReaderPaginationLabel]=" 'Next page' " [screenReaderPageLabel]=" 'Page' " [screenReaderCurrentLabel]=" 'Current page' " (pageChange)="onPageChange($event) "></pagination-controls>
+        </div> -->
+
+        <div class="loading-box " *ngIf="!loading && !reportList.length ">
+            <p class="alert-dark p-2 ">
+                <ng-container>
+                    Sorry. We found no result.
+                </ng-container>
+                <ng-template #withOutTerm> Sorry. We found no result. </ng-template>
+            </p>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,90 @@
+@import "src/assets/scss/theme/theme_variables";
+
+.container {
+  padding: 10px;
+}
+
+ul li {
+  list-style: none;
+
+}
+
+.tag {
+  background-color: $primary;
+  color: $white;
+  margin: 10px 5px;
+  border-radius: 7px;
+}
+
+//https://codepen.io/r3hab/pen/GBdXEq/
+.card-footer {
+  padding: 0 1.25rem;
+}
+
+.question-list {
+  min-height: 75vh;
+}
+
+
+.loading-box {
+  padding-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  i {
+    text-align: center;
+    text-shadow: 2px 2px #8e8e8e;
+  }
+}
+
+.loading-box {
+  padding-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  i {
+    text-align: center;
+    text-shadow: 2px 2px #8e8e8e;
+  }
+}
+
+.status {
+  border: 0px solid;
+  border-radius: 10px 0px 10px 0px;
+  padding: 6px;
+  color: $white;
+  text-align: center;
+}
+
+
+.likes {
+  margin-top: 2px;
+}
+
+.card:hover {
+  box-shadow: 1px 3px 5px 3px $primary;;
+}
+
+.card {
+  background-color: $mainBackgroundLight;
+  border-radius: 10px;
+}
+
+pagination-controls ul {
+  padding-left: 0px !important;
+}
+
+.search-input {
+  border: 1px solid $primary;
+  border-radius: 0px 10px 10px 0px ; 
+}
+
+.btn-search {
+  background-color: white!important;
+  border: 1px solid $primary!important;
+  border-radius: 15px 0px 0px 15px;
+  border-right: 0px solid!important;
+}
+
+.search-input::placeholder {
+  color: $primary;
+  opacity: 0.5;
+}

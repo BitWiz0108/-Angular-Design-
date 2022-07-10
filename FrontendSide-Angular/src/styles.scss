@@ -1,0 +1,179 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "src/assets/scss/progress-bar";
+@import "assets/scss/theme/theme_variables";
+@import "assets/scss/theme/theme_styles";
+@import "assets/scss/passwordStrength";
+@font-face {
+    font-family: Serif;
+    font-style: normal;
+    font-weight: normal;
+    //src: url('./assets/fonts/Vazir-Medium-FD.eot');
+    //src: url('./assets/fonts/Vazir-Medium-FD.eot') format('embedded-opentype'),
+    //url('./assets/fonts/Vazir-Medium-FD.woff2') format('woff2'),
+    //url('./assets/fonts/Vazir-Medium-FD.woff') format('woff'),
+    //url('./assets/fonts/Vazir-Medium-FD.ttf') format('truetype');
+}
+
+body {
+    background-color: #f8f9fa!important;
+    padding: 0;
+    margin: 0;
+}
+
+html {}
+
+body,
+div,
+table,
+label,
+button,
+span,
+a,
+p,
+legend,
+input,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+tr,
+td {
+    font-family: 'Montserrat', sans-serif !important;
+    text-decoration: none;
+    text-align: left;
+    //font-weight: bold;
+    font-size: 1.02rem;
+}
+
+.form-row {
+    margin-top: 10px;
+}
+
+table {
+    tbody {
+        tr {
+            td {
+                font-weight: 200;
+            }
+        }
+    }
+}
+
+.fa {
+    margin: 5px;
+}
+
+.fa-trash {
+    color: red;
+}
+
+.fa-edit {
+    color: blue;
+}
+
+.checkbox-style {
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+}
+
+.color-blue {
+    color: #00f;
+}
+
+.color-red {
+    color: #dc3545;
+}
+
+.color-green {
+    color: #28a745;
+}
+
+.color-white {
+    color: #fff;
+}
+
+.color-bale {
+    color: $bale;
+}
+
+.color-primary {
+    color: $primary!important;
+}
+
+.bk-color-primary {
+    background-color: $primary !important;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+    display: block;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.btn-loading-bar {
+    display: flow-root!important;
+    margin-top: -25px!important;
+    font-size: 20px!important;
+}
+
+.card .card-header {
+    border-color: #deceb3;
+}
+
+pagination-controls ul {
+    padding-left: 0px !important;
+}
+
+.text-or-tag .ng-select-container {
+    border: 1px solid $primary !important;
+    border-right: 0px !important;
+    border-radius: 10px 0px 0px 10px !important;
+    color: #1C6DD0 !important;
+}
+
+.tags-selector .ng-select-container {
+    border: 1px solid $primary !important;
+    border-radius: 0px 10px 10px 0px !important;
+    color: #1C6DD0 !important;
+}
+
+.tags-selector .ng-select-container .ng-placeholder {
+    color: $primary!important;
+    opacity: 0.5;
+    width: 85%;
+    text-align: center!important;
+}
+
+ng-select .ng-option {
+    color: $primary!important;
+}
+
+app-question-action ckeditor .ck-editor__editable_inline {
+    min-height: 250px;
+}
+
+.ng-select .ng-value {
+    margin-bottom: 0px!important;
+}
+
+.ng-select .ng-value-container {
+    padding-top: 0px !important;
+}
+
+.cc-bottom {
+    transform: translateY(0) !important;
+}

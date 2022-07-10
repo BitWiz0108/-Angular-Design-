@@ -1,0 +1,50 @@
+
+
+// Visually hide content, but leave it exposed to assistive tech.
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+label {
+  //padding: 6px 8px;
+  //display: inline-block;
+  ////background-color: #ddd;
+  //border-radius: 50%;
+  //cursor: pointer;
+  margin: 5px 6px 0 6px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #8890a1;
+  font-weight: 400;
+}
+
+// Style the label when input has focus using adjacent sibling pseudo selector.
+// Emulate browser's native focus styling.
+// Targets IE, FF, Edge. Displays a dotted outline w/inherited color.
+.upload:focus + label,
+  // FF scripted fallback.
+.has-focus {
+  outline: 1px dotted;
+}
+
+// Targets Webkit...
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  // ...but excludes Edge. Displays blue focus ring.
+  @supports (not (-ms-accelerator:true)) {
+    .upload:focus + label {
+      outline-width: 5px;
+      outline-style: auto;
+      outline-color: -webkit-focus-ring-color;
+    }
+  }
+}
+
+.badge {
+  margin: 0 2px;
+}
+

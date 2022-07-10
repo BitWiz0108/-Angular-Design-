@@ -1,0 +1,39 @@
+<label style="margin-top: 40px" [for]="_id" *ngIf="!files.length">
+  <i class="fa fa-file"></i>
+  {{buttonText ? buttonText : 'انتخاب فایل'}}
+  <span *ngIf="required">*</span>
+</label>
+<input type="file"
+       [accept]="acceptTypes"
+       [id]="_id" class="upload" style="display: none" (change)="selectFiles($event)"/>
+
+<div class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" id="uploadFileModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: white">
+        <h4>وضعیت آپلود</h4>
+      </div>
+      <div class="modal-body">
+        <ng-container *ngFor="let item of files; let i = index">
+          <div class="progress">
+            <div [id]="'p-bar' + i" style="background-image: linear-gradient(to right, #3bff69 , green)!important;"
+                 class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <p class="text-center font-weight-light">درحال بارگذاری...</p>
+          <p>{{item.name}}</p>
+        </ng-container>
+      </div>
+      <div class="modal-footer">
+        <button style="margin: 0 2px" type="button" class="btn btn-danger pull-right" (click)="cancelUploading()">انصراف</button>
+        <button style="margin: 0 2px" type="button" class="btn btn-primary pull-right" *ngIf="createOneFileWentWrong" (click)="createFileDomain(index)">تلاش دوباره</button>
+        <button style="margin: 0 2px" type="button" class="btn btn-primary pull-right" *ngIf="currentChunkDetails.size !== 0"
+                (click)="send(currentChunkDetails.piece, currentChunkDetails.start,
+                 currentChunkDetails.end, currentChunkDetails.sliceSize, currentChunkDetails.size,
+                  currentChunkDetails.file, currentChunkDetails.index)">ادامه آپلود
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

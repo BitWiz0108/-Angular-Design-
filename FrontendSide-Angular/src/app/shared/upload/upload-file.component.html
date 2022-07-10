@@ -1,0 +1,191 @@
+<!--<span data-toggle="tooltip" data-placement="bottom" title="افزودن فایل" class="pull-left"-->
+<!--style="margin:7px 6px 0 6px;cursor: pointer;font-size: 20px; color: #8890a1; font-weight: 400">-->
+<!--<div class="fileUpload">-->
+<!--<i class="fa fa-file-text-o" *ngIf="mobile === false"></i>-->
+<!--<i class="material-icons" *ngIf="mobile === true">attach_file</i>-->
+<!--<input type="file" multiple id="file_file" class="upload" (change)="selectFiles($event)"/>-->
+<!--</div>-->
+<!--</span>-->
+
+<input type="file"
+       accept=".zip,.rar,.tar,.7zip
+       ,.jpg,.jpeg,.webp,.psd,.tiff
+       ,.mp4,.avi,.wmv,.mpg,.flv
+       ,.mp3,.wav,.wma,.ogg,.amr,.m4a
+       ,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.odt, .fodt. , .ZIP,.RAR,.TAR,.7ZIP
+       ,.JPG,.JPEG,.webp,.PSD,.TIFF
+       ,.MP4,.AVI,.WMV,.MPG,.FLV
+       ,.MP3,.WAV,.WMA,.OGG,.AMR ,.M4A
+       ,.DOC,.DOCX,.XLS,.XLSX,.PPT,.PPTX,.PDF,.ODT, .FODT."
+       [id]="id" class="upload visually-hidden" (change)="selectFiles($event)"/>
+<label [for]="id">
+  <i class="fa fa-file-text-o" *ngIf="mobile === false && uploadSize === 5242880"
+     [title]="'افزودن فایل- حجم فایل باید کمتر از ۵ مگابایت باشد'"></i>
+  <i class="material-icons" *ngIf="mobile === true && uploadSize === 5242880"
+     [title]="'افزودن فایل- حجم فایل باید کمتر از ۵ مگابایت باشد'">attach_file</i>
+  <i class="fa fa-file-text-o" *ngIf="mobile === false && uploadSize !== 5242880"
+     [title]="'افزودن فایل- حجم فایل باید کمتر از ۲۵ مگابایت باشد'"></i>
+  <i class="material-icons" *ngIf="mobile === true && uploadSize !== 5242880"
+     [title]="'افزودن فایل- حجم فایل باید کمتر از ۲۵ مگابایت باشد'">attach_file</i>
+</label>
+
+
+<nbw-modal [autoShow]="false" #uploadStatus [hasHeader]="false" [hasFooter]="false" [dataBackdrop]="false">
+  <div modal-body>
+    <div class="panel panel-default" style="margin: -15px;">
+      <div class="panel-heading" style="background-color: white">
+        <h4>وضعیت آپلود</h4>
+      </div>
+      <div class="panel-body">
+        <ng-container *ngFor="let item of files; let i = index">
+          <div class="progress">
+            <div [id]="'p-bar' + i" style="background-image: linear-gradient(to right, #3bff69 , green)!important;"
+                 class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            </div>
+            <p>درحال بارگذاری...</p>
+          </div>
+          <p>{{item.name}}</p>
+        </ng-container>
+      </div>
+      <div class="panel-footer flow-root">
+        <button style="margin: 0 2px" type="button" class="btn btn-danger pull-right" (click)="cancelUploading()">انصراف</button>
+        <button style="margin: 0 2px" type="button" class="btn btn-primary pull-right" *ngIf="createOneFileWentWrong" (click)="createFileDomain(index)">تلاش دوباره</button>
+        <button style="margin: 0 2px" type="button" class="btn btn-primary pull-right" *ngIf="currentChunkDetails.size !== 0"
+                (click)="send(currentChunkDetails.piece, currentChunkDetails.start,
+                 currentChunkDetails.end, currentChunkDetails.sliceSize, currentChunkDetails.size,
+                  currentChunkDetails.file, currentChunkDetails.index)">ادامه آپلود
+        </button>
+      </div>
+    </div>
+  </div>
+</nbw-modal>
+
+
+
+
+<nbw-modal
+  [hasHeader]="true"
+  [hasFooter]="false"
+  [modalSize]="MyModalSize.CUSTOM_WIDTH"
+  [customWidthPercent]="{xs: 100, md:70 ,lg:70 , sm:70}"
+  autoShow="false"
+  [myId]="'errorFile'+id">
+  <div modal-header>
+    <div class="col-sm-9 col-md-9 col-xs-9 col-lg-9">
+      افزودن لینک
+    </div>
+  </div>
+  <div modal-body class="flow-root">
+    <div class="col-md-12" style="background-color: aliceblue;margin-bottom: 10px; padding: 5px">
+      <i class="fa fa-info-circle"></i>
+      حجم فایل نباید بیشتر از
+      <strong *ngIf="uploadSize === 5242880; else showTeacherLimitation">
+        ۵ مگابایت
+      </strong>
+      <ng-template #showTeacherLimitation> ۲۵ مگابایت</ng-template>
+      باشد
+    </div>
+
+    <div class="col-md-6 " style="max-height: 320px ; overflow-y: auto">
+      <p>
+        لیست فایل های ارسالی شما که پشتیبانی نمی شود.
+      </p>
+      <table class="table table-striped table-striped">
+        <thead>
+        <tr>
+          <th>نام فایل</th>
+          <th> حجم فایل</th>
+          <th>دلیل عدم پشتیبانی</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor=" let item of fileErrorList">
+          <tr>
+            <th>
+              {{item.fileName}}
+            </th>
+            <th dir="ltr">{{
+                item.fileSize | filesize
+              }}</th>
+            <th style="color: red">{{
+                item.error
+              }}</th>
+          </tr>
+        </ng-container>
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="col-md-6 " style="background-color: antiquewhite;">
+      <p>لیست نوع فایل های مجاز</p>
+      <table class="table table-striped table-striped">
+        <thead>
+        <tr>
+          <th>
+            نوع فایل
+          </th>
+          <th class="text-center">پسوندهای مجاز</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>تصویر</th>
+          <th>
+            <span class="badge">jpg.</span>
+            <span class="badge">jpeg.</span>
+            <span class="badge">png.</span>
+            <span class="badge">psd.</span>
+            <span class="badge">tiff.</span>
+          </th>
+        </tr>
+        <tr>
+          <th>ویدئو</th>
+          <th>
+            <span class="badge">mp4.</span>
+            <span class="badge">avi.</span>
+            <span class="badge">wmv.</span>
+            <span class="badge">mpg.</span>
+            <span class="badge">flv.</span>
+          </th>
+        </tr>
+        <tr>
+          <th>صوت</th>
+          <th>
+            <span class="badge">mp3.</span>
+            <span class="badge">wav.</span>
+            <span class="badge">wma.</span>
+            <span class="badge">ogg.</span>
+            <span class="badge">amr.</span>
+            <span class="badge">m4a.</span>
+          </th>
+        </tr>
+        <tr>
+          <th>فایل فشرده</th>
+          <th>
+            <span class="badge">zip.</span>
+            <span class="badge">rar.</span>
+            <span class="badge">tar.</span>
+            <span class="badge">7zip.</span>
+          </th>
+        </tr>
+        <tr>
+          <th>اسناد</th>
+          <th>
+            <span class="badge">doc.</span>
+            <span class="badge">docx.</span>
+            <span class="badge">xls.</span>
+            <span class="badge">xlsx.</span>
+            <span class="badge">ppt.</span>
+            <span class="badge">pptx.</span>
+            <span class="badge">pdf.</span>
+            <span class="badge">odt.</span>
+            <span class="badge">fodt.</span>
+          </th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</nbw-modal>

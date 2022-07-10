@@ -1,0 +1,31 @@
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" [id]="id">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">حذف</h5>
+        <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 text-center" style="padding: 0">
+          <span class="font-m" style=" font-weight: bold ;margin-top: 5px">از حذف {{title}} اطمینان دارید ؟</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 ">
+          <!--      <ng-container *ngIf="hasFile">-->
+          <!--        <mat-checkbox [(ngModel)]="dType" name="dc" class="pull-left" style="margin-top: 5px; ">حذف تمامی پوشه و-->
+          <!--          فایلها-->
+          <!--        </mat-checkbox>-->
+          <!--      </ng-container>-->
+          <button name="deleteButton" class="btn btn-primary pull-left" (click)="deleteAction(true)"
+                  style="margin: 0 5px 0 5px">بله
+          </button>
+          <button class="btn btn-danger pull-left" (click)="deleteAction(false)">خیر</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

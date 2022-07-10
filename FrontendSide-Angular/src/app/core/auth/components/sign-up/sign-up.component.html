@@ -1,0 +1,48 @@
+<div class="my-container">
+  <div class="row">
+    <div class="column box-border">
+        <h2 class="text-center font-weight-bold mt-3 mb-5" *ngIf="codeType === codeTypeEnum.SIGNUP">Sign up</h2>
+        <h2 class="text-center font-weight-bold mt-3 mb-5" *ngIf="codeType === codeTypeEnum.FORGET_PASSWORD">Forget password</h2>
+      <small class="form-text text-center text-success" *ngIf="showSuccessMessage">
+        Dear user, we sent you a confirmation email, check user email address.
+      </small>
+      <form [formGroup]="emailForm">
+        <div class="form-group">
+          <label class="control-label" for="username">
+            Email
+          </label>
+          <div class="input-group">
+            <i class=" fa-2x fa fa-user input-group-addon"></i>
+          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" [disabled]="showSuccessMessage"
+                 placeholder="Enter your email address" [(ngModel)]="email" formControlName="email" (change)="showSuccessMessage = false"
+                 [ngClass]="{'is-valid': (emailForm.controls['email'].valid && emailForm.controls['email'].touched),
+                  'is-invalid' : ((signUpClicked|| emailForm.controls['email'].touched) && emailForm.controls['email'].invalid)}">
+          </div>
+          <small class="form-text text-muted" *ngIf="(signUpClicked || emailForm.controls['email'].touched) &&
+           emailForm.controls['email'].hasError('required')">Please enter your email address.</small>
+          <small class="form-text text-muted" *ngIf="emailForm.controls['email'].hasError('pattern')">
+            Please enter the email in the right pattern.
+          </small>
+        </div>
+      </form>
+      <div class="loginBtn mt-3">
+        <button type="button" class="btn btn-success w-100" (click)="sendEmail()" [disabled]="loading || showSuccessMessage">
+          <ng-container>Send verification email</ng-container>
+          <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+        </button>
+      </div>
+      <div class="mt-2 text-center">
+        Or
+        <a class="text-center color-primary font-weight-bold" [routerLink]="['/auth/signIn']"
+          type="button"> login</a>
+      </div>
+      <p class="text-muted mt-5 text-center" *ngIf="codeType === codeTypeEnum.SIGNUP">
+        By clicking “Send verification email”, you agree to our <br/>
+        <a class="font-weight-bold color-primary"
+           (click)="openModal('privacy-policy-modal')">
+          privacy policy</a>
+      </p>
+    </div>
+  </div>
+</div>
+

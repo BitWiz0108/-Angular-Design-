@@ -1,0 +1,84 @@
+@import "src/assets/scss/theme/theme_variables";
+h4 {
+  border-bottom: 4px double #ddd;
+  padding-bottom: 12px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+form {
+  textarea {
+    resize: none;
+  }
+  label {
+    font-weight: 600;
+  }
+  // button {
+  //     font-weight: bold;
+  //     text-transform: uppercase;
+  //     letter-spacing: 0.5px;
+  //     min-width: 120px;
+  // }
+}
+
+container {
+  .custom-checbkox > div > .input {
+    display: flex;
+    width: auto;
+  }
+}
+
+.createTagBtn,
+.questionPreviewbtn {
+  display: flex;
+  align-items: center;
+  height: fit-content !important;
+  width: fit-content !important;
+  text-transform: none !important;
+  letter-spacing: 0px !important;
+  background-color: $primary !important;
+  align-self: flex-end !important;
+}
+
+.createTagBtn,
+.questionPreviewbtn {
+  display: flex;
+  align-items: center;
+  height: fit-content !important;
+  width: fit-content !important;
+  background-color: $primary !important;
+  align-self: flex-end !important;
+}
+
+.tag {
+  background-color: $primary;
+  color: $white;
+  margin: 10px 5px;
+  padding: 2px 10px;
+  border-radius: 3px;
+}
+
+.question-body {
+  width: 84%;
+  color: $bale;
+}
+
+.question-status {
+  width: 15%;
+  height: fit-content;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  color: #7b7b7b;
+  padding-left: 2rem;
+}
+.ng-autocomplete {
+  width: 100%;
+  // max-width: 600px;
+  display: table;
+  /* width: 600px; */
+  // margin: 0 auto;
+}

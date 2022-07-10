@@ -1,0 +1,203 @@
+<div class="container question-list">
+  <!--  <div class="row">-->
+  <!--    <div class="col-sm-11 mb-3">-->
+  <!--      <input type="text" id="myFilter" [(ngModel)]="term" placeholder="Search for question.."-->
+  <!--             (keyup.enter)="search()" class="form-control">-->
+  <!--    </div>-->
+  <!--    <div class="col-sm-1 mb-3">-->
+  <!--      <button class="btn btn-save" type="button" [disabled]="loading" (click)="getQuestionList(1)">-->
+  <!--        <i class="fa fa-search"  *ngIf="!loading"></i>-->
+  <!--        <i class="fa fa-spin fa-spinner" *ngIf="loading"></i>-->
+  <!--      </button>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <div class="row justify-content-center" id="myItems">
+    <div class="loading-box" *ngIf="loading">
+      <i class="fa fa-spin fa-spinner fa-3x"></i>
+    </div>
+    <div class="col-sm-12 mb-3" *ngIf="!loading">
+      <ng-container *ngIf="questionList && questionList.length">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="btn btn-light mr-3"
+                  (click)="getQuestionList('')"
+                >
+                  Most Recent Request
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="btn btn-light mr-3"
+                  (click)="getQuestionList('like')"
+                >
+                  <i class="fa fa-filter"></i>
+                  Top liked request
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  (click)="getQuestionList('likeWithVideo')"
+                >
+                  <i class="fa fa-filter"></i>
+                  Top request paper with video
+                </button>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Request Filter
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">top liked request</a>
+                  <a class="dropdown-item" href="#">top request paper with video</a>
+                </div>
+              </li> -->
+            </ul>
+          </div>
+        </nav>
+        <div
+          class="card mx-0"
+          *ngFor="
+            let item of questionList
+              | paginate
+                : {
+                    id: config.id,
+                    itemsPerPage: config.itemsPerPage,
+                    currentPage: config.currentPage,
+                    totalItems: totalCount
+                  };
+            let i = index
+          "
+        >
+          <!--      <div class="card" *ngFor="let item of questionList; let i=index">-->
+          <div
+            class="cursor-pointer question-box"
+            [routerLink]="['/question/details']"
+            [queryParams]="{ objectId: item.id }"
+          >
+            <div class="d-flex flex-row">
+              <div class="d-flex flex-row ml-2 mt-1">
+                <i class="fa color-bale fa-eye"></i>
+                <p class="fa color-bale">{{ item.seen }}</p>
+                <!-- <button type="button" class="btn btn-info mx-2" data-toggle="tooltip" data-placement="top"
+                  title="Information abut question">
+                  <i class="fa fa-info-circle m-0" aria-hidden="true"></i>
+                </button> -->
+              </div>
+              <div class="ml-auto p-2 color-bale">
+                {{ item.systemCreationDate | date }}
+              </div>
+              <p
+                class="status"
+                [ngClass]="
+                  item.questionStatus == 'WITHPRESENTATION'
+                    ? 'bg-success'
+                    : 'bg-danger'
+                "
+              >
+                {{
+                  item.questionStatus === "WITHPRESENTATION"
+                    ? "With Presentation"
+                    : item.questionStatus === "NOPRESENTATIONYET"
+                    ? "No Presentation Yet"
+                    : "Closed"
+                }}
+              </p>
+            </div>
+            <div>
+              <p class="pl-3 font-weight-bold color-primary">
+                {{ item.title }}
+              </p>
+            </div>
+            <div>
+              <div class="col-sm12 md-3 form-inline">
+                <ng-container *ngFor="let tag of item.tagList">
+                  <p class="tag pl-3 pr-3">{{ tag.title }}</p>
+                </ng-container>
+                <div class="d-flex flex-row ml-auto color-bale">
+                  <i class="fa fa-thumbs-up"></i>
+                  <p class="mb-0 mr-4 likes">{{ item.usefulCount }}</p>
+                  <p class="mb-0 mr-4">by {{ item.creatorDisplayName }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div
+      class="has-text-centered color-bale font-weight-bold"
+      *ngIf="!loading && questionList.length"
+    >
+      <!--      <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>-->
+      <pagination-controls
+        [id]="config.id"
+        [previousLabel]="'Previous'"
+        [nextLabel]="'Next'"
+        [screenReaderPaginationLabel]="'Next page'"
+        [screenReaderPageLabel]="'Page'"
+        [screenReaderCurrentLabel]="'Current page'"
+        (pageChange)="onPageChange($event)"
+      ></pagination-controls>
+    </div>
+
+    <div class="loading-box" *ngIf="!loading && !questionList.length">
+      <p class="alert-danger p-2">
+        <ng-container *ngIf="term; else withOutTerm">
+          Unfortunately, we couldn't find any question including your keywords.
+          There is either no question including your keywords or your keywords
+          are too general...
+        </ng-container>
+        <ng-template #withOutTerm
+          >There is no question for showing, Be the first One who asks a
+          Question.
+        </ng-template>
+      </p>
+
+      <ng-container *ngIf="term && suggestedVideo && suggestedVideo.length">
+        <div class="card" *ngFor="let item of suggestedVideo; let i = index">
+          <fieldset
+            class="form-group"
+            [ngStyle]="{ 'background-color': '#dcdbdb' }"
+          >
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-2 pl-4">
+                <h4>Suggested Video {{ i + 1 }}</h4>
+                <br />
+              </legend>
+              <div class="col-sm-10">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <div class="submenu" style="height: auto">
+                      <div class="videoWrapper">
+                        <youtube-player videoId="{{ item.id.videoId }}">
+                        </youtube-player>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+{"_id":{"$oid":"618537d8c65e9f610fb336de"},"title":"windows","_class":"ir.mjimani.basespringboot.domain.tag.Tag"}
+{"_id":{"$oid":"6196093eb3874e1dba53b5af"},"title":"node","_class":"ir.mjimani.basespringboot.domain.tag.Tag"}
+{"_id":{"$oid":"61960972b3874e1dba53b5b0"},"title":"angular","_class":"ir.mjimani.basespringboot.domain.tag.Tag"}
+{"_id":{"$oid":"61b8c5dacb8422599de40bef"},"title":"Linux","_class":"ir.mjimani.basespringboot.domain.tag.Tag"}
+{"_id":{"$oid":"6283c4a928a72d2131ae8b2c"},"title":"Java","_class":"ir.mjimani.basespringboot.domain.tag.Tag"}

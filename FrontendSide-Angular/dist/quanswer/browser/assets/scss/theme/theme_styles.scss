@@ -1,0 +1,88 @@
+@import "theme_variables";
+
+.card {
+  border-color: $mainColor;
+}
+
+.btn-save {
+  background-color: $btnColorDarker!important;
+  border: #aaa solid 1px!important;
+  color: white!important;
+}
+
+.btn-save:hover {
+  background-color: $btnColor!important;
+  border: black solid 1px!important;
+}
+
+.btn-save-lighter {
+  background-color: $btnColor!important;
+  border: #aaa solid 1px!important;
+  color: white!important;
+}
+
+.btn-save-lighter:hover {
+  background-color: $btnColorLighter!important;
+  border: black solid 1px!important;
+}
+
+
+body {
+  margin: 0!important;
+  padding: 0!important;
+  background-color: $mainColor!important
+}
+
+.card {
+  margin: 10px;
+  .card-header {
+    display: inline;
+    border-color: #683eb7;
+  }
+  h5 {
+    float: left;
+  }
+  button {
+    float: right;
+  }
+}
+
+.form-control.is-valid {
+  padding-right: 5px!important;
+  background-position: right calc(.375em + .1875rem) center!important;
+}
+
+.form-control.is-invalid {
+  padding-right: 5px!important;
+  background-position: right calc(.375em + .1875rem) center!important;
+}
+
+.custom-select.is-valid {
+  //padding-right: 5px!important;
+  background-position: right calc(.375em + .1875rem) center!important;
+}
+
+.custom-select.is-invalid {
+  //padding-right: 5px!important;
+  background-position: right calc(.375em + .1875rem) center!important;
+}
+.input-group > .input-group-prepend > .input-group-text {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.text-muted {
+  text-align: left;
+  color: $darkText!important;
+}
+
+.modal-header {
+  display: flow-root!important;
+  .modal-title {
+    float: left;
+  }
+  .close {
+    float: right;
+  }
+}
+

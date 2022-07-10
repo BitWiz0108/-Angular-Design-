@@ -1,0 +1,41 @@
+@import "src/assets/scss/theme/theme_variables";
+
+.card {
+  .active {
+    border: 1px solid white !important;
+
+    a {
+      color: blue!important;
+      //text-decoration: underline;
+    }
+  }
+}.card {
+  .card-header {
+    a {
+      color: #494848;
+    }
+  }
+}
+
+.sidebar {
+  width: 20%!important;
+  background-color: #ffffff;
+  min-height: 550px;
+}
+
+.selectable{
+  background-color: $background;
+  cursor: pointer;
+  width: 100%;
+
+}
+
+.selectable.active {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.selectable:hover {
+  cursor: pointer;
+  background-color: $background!important;
+}

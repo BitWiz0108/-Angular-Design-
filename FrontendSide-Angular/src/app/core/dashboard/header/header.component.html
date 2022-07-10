@@ -1,0 +1,153 @@
+<div class="header">
+  <div class="dropdown float-left">
+    <button class="btn btn-wolf dropdown-toggle color-white" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+     {{mainUser.displayName}}dssd
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item cursor-pointer" (click)="openModal()">Profile</a>
+      <a class="dropdown-item cursor-pointer" data-toggle="modal" data-target="#changePasswordModal">Change password</a>
+      <a class="dropdown-item cursor-pointer" (click)="logout()">Sign out</a>
+    </div>
+  </div>
+  sduioiuo
+  <div class="dropdown float-left">
+    <button class="btn btn-wolf dropdown-toggle color-white" type="button" id="dropdownMenuButtonwww" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+      <span >اطلاعات خود را از اینجا کامل کنید</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonwww">
+      <a class="dropdown-item cursor-pointer" >پروفایل</a>
+      <a class="dropdown-item cursor-pointer" data-toggle="modal" data-target="#changePasswordModal">ویرایش گذرواژه</a>
+      <a class="dropdown-item cursor-pointer" data-toggle="modal" data-target="#increaseCreditModal">افزایش اعتبار</a>
+      <a class="dropdown-item cursor-pointer" >خروج</a>
+    </div>
+  </div>
+
+</div>
+<!--<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="changePasswordModal">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <form (ngSubmit)="sendChangePassword()" [formGroup]="changePasswordForm">-->
+<!--        <div class="modal-header">-->
+<!--          <h5 class="modal-title">Change password</h5>-->
+<!--          <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close">-->
+<!--            <span aria-hidden="true">&times;</span>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--          <div class="form-row">-->
+<!--            <div class="col-md-4 mb-4">-->
+<!--              <label for="currentPassword">Current password</label>-->
+<!--              <input type="text" class="form-control" id="currentPassword" name="userNameF"-->
+<!--                     [(ngModel)]="changePassword.currentPassword" formControlName="currentPassword" title="Current password"-->
+<!--                     [ngClass]="{'is-valid': (changePasswordForm.controls['currentPassword'].valid && changePasswordForm.controls['currentPassword'].touched),-->
+<!--                  'is-invalid' : ((submitClicked || changePasswordForm.controls['currentPassword'].touched) && changePasswordForm.controls['currentPassword'].invalid)}">-->
+<!--              <div class="invalid-feedback" *ngIf="changePasswordForm.controls['currentPassword'].hasError('required')">-->
+<!--                Current password is required.-->
+<!--              </div>-->
+<!--              <div class="invalid-feedback" *ngIf="changePasswordForm.controls['currentPassword'].hasError('pattern')">-->
+<!--                Enter the current password in the right pattern.-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-4 mb-4">-->
+<!--              <label for="currentPassword">New password</label>-->
+<!--              <input type="text" class="form-control" id="newPassword" name="newPassword"-->
+<!--                     [(ngModel)]="changePassword.newPassword" formControlName="newPassword" title="New password"-->
+<!--                     [ngClass]="{'is-valid': (changePasswordForm.controls['newPassword'].valid && changePasswordForm.controls['newPassword'].touched),-->
+<!--                  'is-invalid' : ((submitClicked || changePasswordForm.controls['newPassword'].touched) && changePasswordForm.controls['newPassword'].invalid)}">-->
+<!--              <div class="invalid-feedback" *ngIf="changePasswordForm.controls['newPassword'].hasError('required')">-->
+<!--                New password is required.-->
+<!--              </div>-->
+<!--              <div class="invalid-feedback" *ngIf="changePasswordForm.controls['currentPassword'].hasError('pattern')">-->
+<!--                Enter the new password in the right pattern.-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-md-4 mb-4">-->
+<!--              <label for="currentPassword">Password confirmation</label>-->
+<!--              <input type="text" class="form-control" id="repeatPassword" name="repeatPassword"-->
+<!--                     [(ngModel)]="changePassword.repeatPassword" formControlName="repeatPassword" title="Password confirmation"-->
+<!--                     [ngClass]="{'is-valid': (changePasswordForm.controls['repeatPassword'].valid && changePasswordForm.controls['repeatPassword'].touched),-->
+<!--                  'is-invalid' : ((submitClicked || changePasswordForm.controls['repeatPassword'].touched) && changePasswordForm.controls['repeatPassword'].invalid)}">-->
+<!--              <div class="invalid-feedback" *ngIf="changePasswordForm.controls['repeatPassword'].hasError('required')">-->
+<!--                Password confirmation is required.-->
+<!--              </div>-->
+<!--              <div class="invalid-feedback" *ngIf="changePasswordForm.controls['currentPassword'].hasError('pattern')">-->
+<!--                Enter the password confirmation in the right pattern.-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
+<!--          <button type="submit" class="btn btn-primary">Send</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="profileModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form (ngSubmit)="changeProfile()" [formGroup]="profileForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Profile</h5>
+          <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="displayName">Display name*</label>
+              <input type="text" class="form-control" id="displayName" name="displayName"
+                     [(ngModel)]="user.displayName" formControlName="displayName"
+                     [ngClass]="{'is-valid': (profileForm.controls['displayName'].valid && profileForm.controls['displayName'].touched),
+                  'is-invalid' : ((changeProfileClicked|| profileForm.controls['displayName'].touched) && profileForm.controls['displayName'].invalid)}">
+              <div class="invalid-feedback" *ngIf="profileForm.controls['displayName'].hasError('required')">
+                Display name is required.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="email">Email (username)</label>
+              <input type="text" class="form-control" id="email" name="email"
+                     [(ngModel)]="user.email" formControlName="email">
+              <small class="form-text text-muted" *ngIf="(changeProfileClicked || profileForm.controls['email'].touched) &&
+           profileForm.controls['email'].hasError('required')">Please enter your email address.</small>
+              <small class="invalid-feedback" *ngIf="profileForm.controls['email'].hasError('pattern')">
+                Please enter the email in the right pattern.
+              </small>
+            </div>
+          </div>
+
+<!--            <div class="col-md-4">-->
+<!--              <label for="whatsapp">واتس آپ</label>-->
+<!--              <input type="text" class="form-control" id="whatsApp" name="whatsApp"-->
+<!--                     [(ngModel)]="user.contact.whatsApp" formControlName="whatsApp">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-row">-->
+<!--            <div class="col-md-4">-->
+<!--              <label for="instagram">اینستاگرام</label>-->
+<!--              <input type="text" class="form-control" id="instagram" name="instagram"-->
+<!--                     [(ngModel)]="user.contact.instagram" formControlName="instagram">-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--              <label for="telegram">تلگرام</label>-->
+<!--              <input type="text" class="form-control" id="telegram" name="telegram"-->
+<!--                     [(ngModel)]="user.contact.telegram" formControlName="telegram">-->
+<!--            </div>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
