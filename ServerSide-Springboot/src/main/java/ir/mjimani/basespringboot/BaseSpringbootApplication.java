@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class BaseSpringbootApplication {
 
     public static void main(String[] args) {
-        String value = "aaaaaaaaaaa,bbbbbbbbbbbb,cccccccccccc";
+        String value = "Starting the program on the server side";
         String[] values = value.split(",");
         System.out.println("values = " + Arrays.asList(values));
         SpringApplication.run(BaseSpringbootApplication.class, args);
