@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "61f65dcdf9449501fa92ca31"
+  },
+  "role": "USER",
+  "displayName": "Especial",
+  "email": "especial_especially@yahoo.com",
+  "password": "$2a$12$zIQdb57ePnZk/t2gNB20UuGvU3kX7SXnEWdnXjwvqXrGGelhm7UVS",
+  "enabled": true,
+  "points": 9,
+  "systemCreationDate": {
+    "$date": {
+      "$numberLong": "1643535821550"
+    }
+  },
+  "_class": "ir.mjimani.basespringboot.domain.user.User",
+  "lastPasswordResetDate": {
+    "$date": {
+      "$numberLong": "1643560198371"
+    }
+  },
+  "modifiedDate": {
+    "$date": {
+      "$numberLong": "1650974431653"
+    }
+  },
+  "tag": [
+    {
+      "_id": {
+        "$oid": "61b8c5dacb8422599de40bef"
+      },
+      "title": "Linux",
+      "_class": "ir.mjimani.basespringboot.domain.tag.Tag"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61f6bdb740646a7fc411648c"
+  },
+  "role": "USER",
+  "displayName": "Mamooli",
+  "email": "mamooli_persianblog@yahoo.com",
+  "password": "$2a$12$2GJXrEnl3xKhPJ0Xvr67JeHQYMOpW7yGlyL2JoH9qxFso1SI3dpOu",
+  "enabled": true,
+  "points": 0,
+  "systemCreationDate": {
+    "$date": {
+      "$numberLong": "1643560375201"
+    }
+  },
+  "_class": "ir.mjimani.basespringboot.domain.user.User",
+  "modifiedDate": {
+    "$date": {
+      "$numberLong": "1644341291382"
+    }
+  },
+  "tag": [
+    {
+      "_id": {
+        "$oid": "61f6c3b640646a7fc41164b1"
+      },
+      "title": "winter",
+      "_class": "ir.mjimani.basespringboot.domain.tag.Tag"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61f6c32540646a7fc41164a9"
+  },
+  "role": "USER",
+  "displayName": "Parvin",
+  "email": "p.feizabadi@gmail.com",
+  "password": "$2a$12$nYGnfhO/YoJxXGpAFddFY.Ddwz/F3EiYw0cv5DmhRm0BLZcZEs1xS",
+  "enabled": true,
+  "points": 0,
+  "systemCreationDate": {
+    "$date": {
+      "$numberLong": "1643561765200"
+    }
+  },
+  "_class": "ir.mjimani.basespringboot.domain.user.User"
+}]

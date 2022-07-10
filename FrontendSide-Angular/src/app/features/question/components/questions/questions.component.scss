@@ -1,0 +1,83 @@
+@import "src/assets/scss/theme/theme_variables";
+
+.container {
+  padding: 10px;
+}
+
+ul li {
+  list-style: none;
+
+}
+
+.tag {
+  background-color: #8A8D90;
+  color: $white;
+  margin: 10px 5px;
+  border-radius: 7px;
+}
+
+//https://codepen.io/r3hab/pen/GBdXEq/
+.card-footer {
+  padding: 0 1.25rem;
+}
+
+.question-list {
+  min-height: 75vh;
+}
+
+
+.loading-box {
+  padding-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  i {
+    text-align: center;
+    text-shadow: 2px 2px #8e8e8e;
+  }
+}
+
+.card:hover {
+    box-shadow: 1px 3px 5px 3px $primary;;
+}
+.card {
+  background-color: $mainBackgroundLight;
+  border-radius: 10px;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.status {
+  border: 0px solid;
+  border-radius: 0px 10px 0px 10px;
+  padding: 6px;
+  color: $white;
+  text-align: center;
+}
+
+
+.likes {
+  margin-top: 2px;
+}
+
+pagination-controls ul {
+  padding-left: 0px !important;
+}
+
+button.btn-info {
+  padding: 0;
+  height: 30px;
+  width: 30px;
+}

@@ -1,0 +1,24 @@
+
+<a class="s-sidebar__trigger">
+  <i class="fa fa-bars"></i>
+</a>
+
+<nav class="s-sidebar__nav">
+  <ul>
+    <li *ngIf="user.role === 'ADMIN'">
+      <a class="s-sidebar__nav-link" [routerLink]="['/panel/user']">
+        <i class="fa fa-list"></i><em>User Management</em>
+      </a>
+    </li>
+    <li>
+      <a class="s-sidebar__nav-link" [routerLink]="['/panel/question']">
+        <i class="fa fa-list"></i><em>My Questions</em>
+      </a>
+    </li>
+    <li>
+      <a class="s-sidebar__nav-link" [routerLink]="['/panel/question']">
+        <i class="fa fa-list"></i><em>My Answers</em>
+      </a>
+    </li>
+  </ul>
+</nav>

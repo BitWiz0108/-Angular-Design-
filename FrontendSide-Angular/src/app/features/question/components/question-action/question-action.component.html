@@ -1,0 +1,358 @@
+<div class="container pt-3 pb-3">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <!--        <div class="col-md-2">-->
+        <!--          <div class="card-title">-->
+        <!--            <ng-container *ngIf="mode === actionMode.ADD; else editSection">-->
+        <!--              Ask a question-->
+        <!--            </ng-container>-->
+        <!--            <ng-template #editSection>-->
+        <!--              Edit form of Question-->
+        <!--            </ng-template>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <div class="w-100 mt-4">
+          <form [formGroup]="form" class="col-md-12 mt-0">
+            <!--            <label>title: </label>-->
+            <label class="control-label font-weight-bold h4" for="title">
+              Paper Title<small>(required)</small>
+            </label>
+            <!-- <input
+              class="form-control"
+              name="title"
+              id="title"
+              placeholder="Please, write the title of the paper here."
+              [(ngModel)]="question.title"
+              formControlName="title"
+              (ngModelChange)="onTitleChange($event)"
+            /> -->
+            <div class="ng-autocomplete">
+              <ng-autocomplete
+                [data]="data"
+                [searchKeyword]="keyword"
+                (selected)="selectEvent($event)"
+                (inputChanged)="onChangeSearch($event)"
+                (inputFocused)="onFocused($event)"
+                [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate"
+                [(ngModel)]="question.title"
+                formControlName="title"
+                name="title"
+                id="title"
+              >
+              </ng-autocomplete>
+
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.title"></a>
+              </ng-template>
+
+              <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+            <small
+              class="form-text text-muted ml-2"
+              *ngIf="form.controls.title.touched && form.controls.title.invalid"
+            >
+              Paper title is required.
+            </small>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <!--        <form [formGroup]="form" class="col-md-12">-->
+        <!--&lt;!&ndash;            <label>title: </label>&ndash;&gt;-->
+        <!--            <input class="form-control" name="title" id="title" placeholder="write the question title"-->
+        <!--                   [(ngModel)]="question.title" formControlName="title">-->
+        <!--            <div class="alert alert-danger" *ngIf="form.controls.title.touched && form.controls.title.invalid">-->
+        <!--              Question title is required.-->
+        <!--          </div>-->
+        <!--        </form>-->
+
+        <div class="w-100 mt-0">
+          <form [formGroup]="form" class="col-md-12 mt-0">
+            <!--            <label>title: </label>-->
+            <label class="control-label font-weight-bold h4" for="name">
+              Name of Journal/Conference
+            </label>
+            <input
+              class="form-control"
+              name="name"
+              id="name"
+              placeholder="Please, write the name of journal/conference."
+              [(ngModel)]="question.name"
+              formControlName="name"
+            />
+            <!-- <small
+              class="form-text text-muted ml-2"
+              *ngIf="form.controls.title.touched && form.controls.title.invalid"
+            >
+              Name of Journal/Conference is required.
+            </small> -->
+          </form>
+        </div>
+
+        <div class="w-100 mt-4">
+          <form [formGroup]="form" class="col-md-12 mt-0">
+            <!--            <label>title: </label>-->
+            <label class="control-label font-weight-bold h4" for="year">
+              Year Of The Paper
+            </label>
+            <input
+              class="form-control"
+              type="date"
+              name="year"
+              id="year"
+              placeholder="Please, write the year of the paper."
+              [(ngModel)]="question.year"
+              formControlName="year"
+              [max]="getToday()"
+            />
+            <!-- <small
+              class="form-text text-muted ml-2"
+              *ngIf="form.controls.title.touched && form.controls.title.invalid"
+            >
+              year of the paper is required.
+            </small> -->
+          </form>
+        </div>
+
+        <div class="w-100 mt-4">
+          <form [formGroup]="form" class="col-md-12 mt-0">
+            <!--            <label>title: </label>-->
+            <label
+              class="control-label font-weight-bold h4"
+              for="firstAuthorName"
+            >
+              First Author's Name
+            </label>
+            <input
+              class="form-control"
+              name="firstAuthorName"
+              id="firstAuthorName"
+              placeholder="Please, write the first Author's Name."
+              [(ngModel)]="question.firstAuthorName"
+              formControlName="firstAuthorName"
+            />
+            <!-- <small
+              class="form-text text-muted ml-2"
+              *ngIf="form.controls.title.touched && form.controls.title.invalid"
+            >
+              First Author's Name is required.
+            </small> -->
+          </form>
+        </div>
+
+        <div class="col-md-12" *ngIf="showEditor">
+          <!--          <label>body: </label>-->
+          <label class="control-label font-weight-bold h4" for="body">
+            Request Description<small>(required)</small>
+          </label>
+          <ckeditor
+            [editor]="Editor"
+            [config]="{
+              toolbar: ['blockquote', 'bold', 'italic', 'heading'],
+              height: '500px',
+              placeholder:
+                'You can write a short description about your request here.'
+            }"
+            [data]="question.body"
+            (change)="changeInBody($event)"
+            id="body"
+          ></ckeditor>
+          <!--        <textarea class="form-control" name="body" id="body" placeholder="Please, describe your question here." [(ngModel)]="question.body"></textarea>-->
+        </div>
+
+        <div class="col-md-12 row pl-0">
+          <div class="col-md-9" *ngIf="showTags">
+            <label class="control-label font-weight-bold h4" for="body">
+              Tags<small>(required)</small>
+            </label>
+            <ng-select
+              (change)="setTag($event)"
+              [items]="tagList"
+              [multiple]="true"
+              name="gfdfsdf"
+              [(ngModel)]="selectedTagList"
+              bindLabel="title"
+              bindValue="id"
+              [placeholder]="'Choose the related tags'"
+            ></ng-select>
+          </div>
+          <button
+            type="button"
+            class="btn btn-save createTagBtn"
+            data-toggle="modal"
+            data-target="#tagModal"
+          >
+            <i class="fa fa-plus"></i>
+            Create tag
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-muted d-flex justify-content-center">
+    <button
+      type="button"
+      class="btn btn-save-lighter questionPreviewbtn"
+      (click)="questionPreview()"
+    >
+      Preview Your Request&emsp;>
+    </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade bd-example-modal-lg"
+  id="previewModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="previewModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="previewModalLabel">Request Preview</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 class="color-primary font-weight-bold pl-2">
+          {{ question.title }}
+        </h3>
+
+        <!-- <div id="questionName" style="margin-left: 1rem; color: #7B7B7B;" class="question-body pl-3"></div>
+                <div id="questionYearOfPaper" style="margin-left: 2rem ; color: #7B7B7B;" class="question-body pl-3"></div>
+                <div id="questionAuthorName" style="margin-left: 1rem; color: #7B7B7B;" class="question-body pl-3"></div> -->
+
+        <table class="ml-4">
+          <tr>
+            <td>Journal/Conference</td>
+            <td class="ml-6">
+              {{ this.question.name ? this.question.name : "" }}
+            </td>
+          </tr>
+          <tr>
+            <td>Year of the Paper</td>
+            <td class="ml-6">
+              {{ this.question.year ? this.question.year : "" }}
+            </td>
+          </tr>
+          <tr>
+            <td>First Author's Name</td>
+            <td class="ml-6">
+              {{
+                this.question.firstAuthorName
+                  ? this.question.firstAuthorName
+                  : ""
+              }}
+            </td>
+          </tr>
+        </table>
+
+        <div class="mt-3 ml-1">
+          <b>Description:</b>
+          <div
+            class="d-flex flex-row align-items-center"
+            style="justify-content: center"
+            *ngIf="showBody"
+          >
+            <div id="questionBody" class="question-body pl-2"></div>
+
+            <!-- <p class="question-status font-weight-bold color-red" ng-if="question.questionStatus === 'WITHPRESENTATION'">
+                        {{ question.questionStatus === "WITHPRESENTATION" ? "With Presentation" : question.questionStatus === "NOPRESENTATIONYET" ? "No Presentation Yet" : "Closed" }}
+                    </p> -->
+          </div>
+        </div>
+
+        <div class="col-sm12 md-3 form-inline">
+          <ng-container *ngFor="let tag of question.tagList">
+            <p class="tag bk-color-primary">{{ tag.title }}</p>
+          </ng-container>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="closeQuestionModal"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-save bk-color-primary"
+          (click)="submit()"
+          [disabled]="loading"
+        >
+          Save
+          <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="tagModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="tagModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tagModalLabel">Creating Tag</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="tag title"
+            name="tag"
+            id="tag"
+            (keydown.enter)="createTag()"
+            [(ngModel)]="tag.title"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-save bk-color-primary"
+          (click)="createTag()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

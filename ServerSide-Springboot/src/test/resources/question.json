@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "62ac55a435e7644f1a8e699c"
+  },
+  "questionStatus": "WITHPRESENTATION",
+  "title": "English Phrases for Presentation",
+  "body": "<p>Simple phrases for English presentation&nbsp;<br>Simple phrases for English presentation&nbsp;<br>Simple phrases for English presentation&nbsp;<br>&nbsp;</p>",
+  "name": "Presentation",
+  "year": "2022-06-16",
+  "firstAuthorName": "Expert Academy",
+  "creatorDisplayName": "Especial",
+  "tag": [
+    {
+      "$ref": "tag",
+      "$id": {
+        "$oid": "61960972b3874e1dba53b5b0"
+      }
+    },
+    {
+      "$ref": "tag",
+      "$id": {
+        "$oid": "6196093eb3874e1dba53b5af"
+      }
+    },
+    {
+      "$ref": "tag",
+      "$id": {
+        "$oid": "61b8c5dacb8422599de40bef"
+      }
+    }
+  ],
+  "answerList": [
+    {
+      "_id": {
+        "$oid": "62ac55b835e7644f1a8e699d"
+      },
+      "body": "<p>Presentation</p>",
+      "isBestAnswer": false,
+      "usefulCount": 0,
+      "videoLink": "https://www.youtube-nocookie.com/embed/9kuZp3fhkdU",
+      "creatorDisplayName": "Especial",
+      "authorCheck": false,
+      "creatorId": "61f65dcdf9449501fa92ca31",
+      "systemCreationDate": {
+        "$date": {
+          "$numberLong": "1655461304714"
+        }
+      }
+    }
+  ],
+  "commentList": [],
+  "usefulCount": 1,
+  "seen": 2,
+  "answersCount": 1,
+  "votesCount": 0,
+  "creatorId": "61f65dcdf9449501fa92ca31",
+  "systemCreationDate": {
+    "$date": {
+      "$numberLong": "1655461284461"
+    }
+  },
+  "_class": "ir.mjimani.basespringboot.domain.question.Question",
+  "modifiedDate": {
+    "$date": {
+      "$numberLong": "1655461304701"
+    }
+  },
+  "participatingIdList": [
+    "61f65dcdf9449501fa92ca31"
+  ]
+},{
+  "_id": {
+    "$oid": "62ac55ee35e7644f1a8e699e"
+  },
+  "questionStatus": "NOPRESENTATIONYET",
+  "title": "Starting Phrases for Presentations",
+  "body": "<p>In this Business English video, I'm going to show you the phrases to help you start your presentations.</p>",
+  "name": "Toomey Business English",
+  "year": "2022-06-01",
+  "firstAuthorName": "Oxford Online English",
+  "creatorDisplayName": "Especial",
+  "tag": [
+    {
+      "$ref": "tag",
+      "$id": {
+        "$oid": "6283c4a928a72d2131ae8b2c"
+      }
+    },
+    {
+      "$ref": "tag",
+      "$id": {
+        "$oid": "618537d8c65e9f610fb336de"
+      }
+    },
+    {
+      "$ref": "tag",
+      "$id": {
+        "$oid": "6196093eb3874e1dba53b5af"
+      }
+    }
+  ],
+  "answerList": [],
+  "commentList": [],
+  "usefulCount": 0,
+  "seen": 0,
+  "answersCount": 0,
+  "votesCount": 0,
+  "creatorId": "61f65dcdf9449501fa92ca31",
+  "systemCreationDate": {
+    "$date": {
+      "$numberLong": "1655461358971"
+    }
+  },
+  "_class": "ir.mjimani.basespringboot.domain.question.Question"
+}]

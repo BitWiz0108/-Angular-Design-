@@ -1,0 +1,149 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="card-title ml-3 font-weight-bolder h3">
+                    <ng-container *ngIf="mode === actionMode.ADD; else editTitle">
+                        Your Presentation
+                    </ng-container>
+                    <ng-template #editTitle> Edit your presentation </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12" *ngIf="showBody">
+                    <ckeditor [editor]="Editor2" [config]="{
+              toolbar: ['blockquote', 'bold', 'italic', 'heading'],
+              placeholder: 'Add a text with a maximum of 250 characters . . .'
+            }" [data]="answer.body" (change)="changeInBody($event)"></ckeditor>
+                </div>
+                <form [formGroup]="form" class="col-md-12 d-flex mt-2">
+                    <div style="display: flex; flex-direction: column; width: 100%">
+                        <div class="input-group mb-3" *ngIf="!uploadedFilePath">
+                            <label style="min-width: fit-content; padding-top: 7px">Video Link (from YouTube):
+              </label>
+                            <input class="form-control ml-2" name="title" id="title" placeholder="Add the video link from YouTube here" [(ngModel)]="answer.videoLink" formControlName="videoLink" />
+                            <div class="alert alert-danger" *ngIf="
+                  form.controls.videoLink.touched &&
+                  form.controls.videoLink.hasError('pattern')
+                ">
+                                The address of your video link is not valid.
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label style="min-width: fit-content; padding-top: 7px">Upload a Presentation:
+              </label>
+                            <div class="custom-file">
+                                <input [disabled]="answer.videoLink" class="custom-file-input ml-5" type="file" id="uploadedPresentation" accept="video/mp4,video/x-m4v,video/*" (change)="onChange($event)" />
+                                <label class="custom-file-label" style="width: 96%; margin-left: 2em" for="uploadedFilePath">Choose file <small>(Max size is 50mb)</small
+                  ><i
+                    class="fa fa-spin fa-spinner btn-loading-bar"
+                    *ngIf="loading"
+                  ></i
+                ></label>
+                            </div>
+                            <!-- <div
+                class="alert alert-danger"
+                *ngIf="
+                  form.controls.videoLink.touched &&
+                  form.controls.videoLink.hasError('pattern')
+                "
+              >
+                The address of your video link is not valid.
+              </div> -->
+                        </div>
+
+
+
+                        <div style="margin-left: 13rem !important">
+                            {{ uploadedFileName }}
+                        </div>
+                        <div class="input-group mb-3">
+                            <label style="min-width: fit-content; padding-top: 7px">
+                </label>
+                            <div class="custom-checkbox" style="display: flex">
+                                <div>
+                                    <input type="checkbox" id="authorCheck" formControlName="authorCheck" [(ngModel)]="answer.authorCheck" name="authorCheck" />
+                                </div>
+                                <div>
+                                    <label for="iAmTheAuthor">
+                  &nbsp; I am the author <small>(optional)</small>
+                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- {{ uploadedFileName }} -->
+                    <!-- </div> -->
+                </form>
+            </div>
+        </div>
+        <div class="card-footer text-muted justify-content-center d-flex p-2">
+            <button type="button" class="btn btn-save-lighter bk-color-primary mr-2" (click)="preview()">
+        Preview Your Presentation >>
+      </button>
+            <button type="button" class="btn btn-danger mr-2" (click)="cancel()">
+        Cancel
+      </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Answer Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <!--        <div class="col-md-12" *ngIf="showPreview">-->
+                <!--          <ckeditor [config]="{toolbar: []}" [editor]="Editor2" [disabled]="true" [data]="answer.body"></ckeditor>-->
+                <!--        </div>-->
+                <table class="ml-4">
+                    <tr>
+                        <!-- <td> Description</td> -->
+
+                        <td class="ml-3">
+                            <div id="answer-body"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>I am Author: </td>
+                        <td class="ml-3" style="color: #7b7b7b">
+                            {{ this.answer.authorCheck ? "Yes" : "No" }}
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="ml-4">
+                    {{ uploadedFileName ? "Uploaded Video Name:" : "" }}
+                </div>
+                <div class="col-md-12" *ngIf="uploadedFileName" style="color: #7b7b7b">
+                    {{ this.answer.uploadedPresentation ? uploadedFileName : "" }}
+                    <!--          <iframe height="90vh" *ngIf="answer.videoLink" style="height: 90vh!important;" width="100%" [src]="answer.videoLink" allowfullscreen></iframe>-->
+                </div>
+                <!-- <div id="answer-body">{{ this.answer.body }}</div> -->
+                <div class="col-md-12 video-section" id="video-section">
+                    <!--          <iframe height="90vh" *ngIf="answer.videoLink" style="height: 90vh!important;" width="100%" [src]="answer.videoLink" allowfullscreen></iframe>-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closeAnswerModal" data-dismiss="modal">
+          Close
+        </button>
+                <button type="button" class="btn btn-save" (click)="submit()" [disabled]="loading">
+          Save
+          <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

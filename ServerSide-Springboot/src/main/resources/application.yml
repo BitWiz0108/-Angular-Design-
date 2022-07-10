@@ -1,0 +1,32 @@
+server:
+  port: 8081
+jwt:
+  secret: Mj@#Im$%ani
+  #  expiration: 1440
+  expiration: 999999
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/quAnswer?retryWrites=true&w=majority
+      #uri: mongodb+srv://mjimani:1LexeQUft25dtbXW@cluster0.pysa4.mongodb.net/TestAtlas?retryWrites=true&w=majority
+  #      database: quAnswer
+  #      port: 27017
+  #      host: localhost
+  #      host: mongoDb
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      
+user: 
+  tags: 
+    notification: 
+      cron: "0 0 2 * * *"
+      questionHyperLink: "http://localhost:4200/#/question/details?objectId="
+
+logging:
+  level:
+     ir.mjimani.basespringboot: DEBUG

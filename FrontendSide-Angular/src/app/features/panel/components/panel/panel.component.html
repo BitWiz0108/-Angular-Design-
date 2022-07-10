@@ -1,0 +1,49 @@
+<div class="row mt-3">
+    <div class="sidebar">
+        <div class="d-flex flex-column text-center color-primary menu-item row p-3">
+            <i class="fa fa-user-o fa-4x"></i>
+            <h4 class="text-center">{{user?.displayName}}</h4>
+            <i class="fa fa-star mr-2">{{user?.points}}</i>
+        </div>
+        <div class="d-flex justify-content-between selectable p-3 color-primary" [ngClass]="getActiveItem('myQuestions')" [routerLink]="['/panel/myQuestions']">
+            <div class="d-flex">
+                <i class="fa fa-2x fa-question mt-0"></i>
+                <h5>&ensp;My Requests</h5>
+            </div>
+            <div class="h4">></div>
+        </div>
+        <div class="d-flex justify-content-between selectable p-3 color-primary" [ngClass]="getActiveItem('myAnswers')" [routerLink]="['/panel/myAnswers']">
+            <div class="d-flex">
+                <i class="fa fa-2x fa-commenting-o mt-0"></i>
+                <h5>&ensp;My Presentations</h5>
+            </div>
+            <div class="h4">></div>
+        </div>
+        <div class="d-flex justify-content-between selectable p-3 color-primary" [ngClass]="getActiveItem('myNotificationTags')" [routerLink]="['/panel/myNotificationTags']">
+            <div class="d-flex">
+                <i class="fa fa-2x fa-bell mt-0"></i>
+                <h5>&ensp;Notifications</h5>
+            </div>
+            <div class="h4">></div>
+        </div>
+        <div class="d-flex justify-content-between selectable p-3 color-primary" [ngClass]="getActiveItem('myPresentation')" [routerLink]="['/panel/myPresentation']">
+            <div class="d-flex">
+                <i class="fa fa-2x fa-upload mt-0"></i>
+                <h5>&ensp;Upload a Presentation</h5>
+            </div>
+            <div class="h4">></div>
+        </div>
+        <div class="d-flex justify-content-between selectable p-3 color-primary" [ngClass]="getActiveItem('reportIssue')" [routerLink]="['/panel/reportIssue']">
+            <div class="d-flex">
+                <i class="fa fa-2x fa-flag-o mt-0"></i>
+                <h5>&ensp;My Reports</h5>
+            </div>
+            <div class="h4">></div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

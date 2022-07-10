@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 row">
+          <div class="col-md-9">
+            <label>If you activate your email notification, you will get an email including all the requests added to the platform with your selected tags. The email is sent once per day and you can select up to three tags. </label>
+            <ng-select
+              (change)="setTag($event)"
+              [items]="tagList"
+              [multiple]="true"
+              name="gfdfsdf"
+              [maxSelectedItems]="3"
+              [(ngModel)]="selectedTagList"
+              bindLabel="title"
+              bindValue="id"
+              [placeholder]="'Choose you related Tags'"
+            ></ng-select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-save bk-color-primary" (click)="submit()" [disabled]="loading">Save
+            <i class="fa fa-spin fa-spinner btn-loading-bar" *ngIf="loading"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

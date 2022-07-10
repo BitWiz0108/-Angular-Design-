@@ -1,0 +1,76 @@
+@import "src/assets/scss/theme/theme_variables";
+.col-md-12 {
+    margin: 10px 0;
+}
+
+.tag {
+    background-color: #ababab;
+    color: black;
+    margin: 10px 5px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.createTagBtn,
+.questionPreviewbtn {
+    display: flex;
+    align-items: center;
+    height: fit-content!important;
+    width: fit-content!important;
+    background-color: $primary!important;
+    align-self: flex-end!important;
+}
+
+.ck-content blockquote {
+    background-color: #e2dfd8!important;
+}
+
+.btn {
+    min-width: 120px!important;
+}
+
+.card {
+    background-color: $mainBackgroundLight;
+    border-radius: 20px;
+}
+
+.card-header {
+    background-color: $mainBackgroundLight;
+    border-bottom: 0px solid;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.question-body {
+    width: 84%;
+    color: $bale;
+}
+
+.question-status {
+    width: 15%;
+    height: fit-content;
+    text-align: center;
+}
+
+.tag {
+    background-color: $primary;
+    color: $white;
+    margin: 10px 5px;
+    padding: 2px 10px;
+    border-radius: 3px;
+}
+
+table,
+th,
+td {
+    color: #7B7B7B;
+    ;
+    padding-left: 2rem;
+}
+
+.ng-autocomplete {
+    width: 100%;
+    // max-width: 600px;
+    display: table;
+    /* width: 600px; */
+    // margin: 0 auto;
+}

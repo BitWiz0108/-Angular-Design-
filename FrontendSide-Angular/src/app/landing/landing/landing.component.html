@@ -1,0 +1,106 @@
+<div style="min-width: 1250px;">
+    <nav class="navbar navbar-expand-md flex-row">
+        <a class="brand-logo active" (click)="cleanSearch()" [routerLink]="['/question/list']">
+            <img class="img img-fluid h-100" alt="logo" title="logo" id="landingLogo" src="./assets/images/newLogo.png">
+        </a>
+        <div class="search-box pl-4">
+            <div class="d-flex">
+                <div class="dropdown">
+                    <a class="form-control pt-1 dropdown-toggle font-weight-bolder color-primary" href="#" id="tagsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-search" *ngIf="showTextSearch"></i>
+                        <i class="fa fa-hashtag" *ngIf="!showTextSearch"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="tagsDropdown">
+                        <a class="dropdown-item cursor-pointer color-primary" (click)="setSearchOption('Tags')">
+                            <i class="fa fa-hashtag"></i> Tags</a>
+                        <a class="dropdown-item cursor-pointer color-primary" (click)="setSearchOption('Text')">
+                            <i class="fa fa-search"></i> Text
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="showTextSearch">
+                    <input type="text" id="myFilter" [(ngModel)]="term" placeholder="Search for paper title" (keyup.enter)="search()" (change)="search()" class="form-control">
+                </div>
+                <div *ngIf="!showTextSearch" class="tagsInput">
+                    <ng-select (change)="setTag($event)" [items]="tagList" [multiple]="true" name="tagDropDown" [(ngModel)]="selectedTagList" bindLabel="title" bindValue="id" [maxSelectedItems]="3" [placeholder]="'Choose 3 Tags'" class="tags-selector"></ng-select>
+                </div>
+
+            </div>
+            <!-- <div class="col-sm-1 mb-3">
+        <button class="btn btn-save" type="button" [disabled]="loading" (click)="search()">
+          <i class="fa fa-search" *ngIf="!loading"></i>
+          <i class="fa fa-spin fa-spinner" *ngIf="loading"></i>
+        </button>
+      </div> -->
+        </div>
+        <!-- EVERYTHING INSIDE HAMBURGER -->
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <!-- NAV ITEM -->
+                <li class="nav-item" [ngClass]="getActiveItem('question/action')">
+                    <a class="nav-link color-primary mr-2" [routerLink]="['/question/action']" [queryParams]="{mode: ActionMode.ADD}" *ngIf="token">Ask for a Presentation</a>
+                </li>
+                <!-- NAV ITEM -->
+                <li class="nav-item" [ngClass]="getActiveItem('question/list')">
+                    <a class="nav-link color-primary mr-2 cursor-pointer" [routerLink]="['/how-it-works']">How it Works
+            <span class="sr-only">(current)</span>
+          </a>
+                </li>
+                <!-- NAV ITEM -->
+                <li class="nav-item" [ngClass]="getActiveItem('question/list')">
+                    <a class="nav-link color-primary mr-2" style="cursor: pointer;" (click)="reloadComponent('/question/list')">Current Requests
+            <span class="sr-only">(current)</span>
+          </a>
+                </li>
+                <!-- NAV ITEM -->
+                <li class="nav-item" [ngClass]="getActiveItem('home')">
+                    <a class="nav-link color-primary mr-2" [routerLink]="['/home']">Home </a>
+                </li>
+                <!-- NAV ITEM -->
+                <li class="nav-item">
+                    <a class="nav-link cursor-pointer color-primary mr-3" [routerLink]="['/auth']" *ngIf="!token">
+            login
+          </a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-success" [routerLink]="['/auth/signUp']" *ngIf="!token">Sign up</button>
+                </li>
+                <li class="nav-item dropdown" *ngIf="token">
+                    <a class="nav-link dropdown-toggle font-weight-bolder" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user mr-2"></i>{{user?.displayName}}
+                        <i class="fa fa-star mr-2"></i>{{user?.points}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item cursor-pointer color-primary" [routerLink]="['/panel/myQuestions']">
+                            <i class="fa fa-home"></i> My Profile </a>
+                        <a class="dropdown-item cursor-pointer color-primary" (click)="clearLocalStorage()">
+                            <i class="fa fa-sign-out"></i> Sign out
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- SECTION CARDS -->
+    <section id="featured-products" class="section-cards">
+        <div class="container-fluid">
+            <router-outlet (activate)='onActivate($event)'></router-outlet>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer id="footer" class="container-fluid">
+        <!-- ROW HEADER -->
+        <div class="row justify-content-between">
+            <h5 class="font-roboto text-center font-weight-bold m-1 ml-3 color-white cursor-pointer align-self-center" [routerLink]="['/about-us']">About Us</h5>
+            <div class="column">
+                <h6 class="font-roboto text-center font-weight-bold m-1 color-white cursor-pointer" [routerLink]="['/privacy-policy']">Privacy policy</h6>
+                <p style="font-size:10px" href="/" class="text-center color-white">Copyright © 2022 Referensee.com. All Rights Reserved.</p>
+            </div>
+            <h5 class="font-roboto text-center font-weight-bold m-1 mr-3 color-white cursor-pointer align-self-center" [routerLink]="['/imprint']">Imprint</h5>
+        </div>
+    </footer>
+</div>

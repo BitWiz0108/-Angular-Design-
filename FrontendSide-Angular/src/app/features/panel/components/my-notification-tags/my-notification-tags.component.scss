@@ -1,0 +1,51 @@
+.container {
+  padding: 10px;
+}
+
+ul li {
+  list-style: none;
+
+}
+
+.tag {
+  background-color: #ababab;
+  color: black;
+  margin: 10px 5px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+//https://codepen.io/r3hab/pen/GBdXEq/
+.card-footer {
+  padding: 0 1.25rem;
+}
+
+.question-list {
+  min-height: 75vh;
+}
+
+
+.loading-box {
+  padding-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  i {
+    text-align: center;
+    text-shadow: 2px 2px #8e8e8e;
+  }
+}
+
+.question-box:hover {
+  background-color: #f6f6f678;
+  box-shadow: 1px 3px 2px 3px #888888;;
+}
+
+.loading-box {
+  padding-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  i {
+    text-align: center;
+    text-shadow: 2px 2px #8e8e8e;
+  }
+}

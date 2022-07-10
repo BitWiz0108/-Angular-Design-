@@ -1,0 +1,38 @@
+<!--<div class="row p-0 m-0">-->
+<!--  <div class="col-2 p-0 m-0">-->
+<!--    <app-sidebar></app-sidebar>-->
+<!--  </div>-->
+<!--  <div class="col-10 p-0 m-0">-->
+<!--    <div class="panel-header">-->
+<!--      <app-header></app-header>-->
+<!--    </div>-->
+<!--    <div class="panel-body">-->
+<!--      <div class="main-body container">-->
+<!--        <router-outlet></router-outlet>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--===============================================================-->
+
+<div class="s-layout">
+  <!-- Sidebar -->
+  <div class="s-layout__sidebar">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- Content -->
+  <main class="s-layout__content">
+    <div class="col-12 p-0 m-0">
+      <div class="panel-header">
+        <app-header></app-header>
+      </div>
+      <div class="panel-body">
+        <div class="main-body container">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
