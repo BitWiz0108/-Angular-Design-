@@ -25,7 +25,7 @@ public class TagServiceImpl implements TagService {
         // Check tag title exists
         Boolean existsTag = entityDao.existsTag(tag.getTitle());
         if (existsTag) {
-            throw new CustomException("Tag title is exists.", 407);
+            throw new CustomException("The tag already exists. Please select it from the list.", 407);
         }
         return entityDao.create(tag);
     }

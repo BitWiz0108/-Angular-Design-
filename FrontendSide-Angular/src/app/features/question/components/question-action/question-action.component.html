@@ -15,8 +15,8 @@
         <div class="w-100 mt-4">
           <form [formGroup]="form" class="col-md-12 mt-0">
             <!--            <label>title: </label>-->
-            <label class="control-label font-weight-bold h4" for="title">
-              Paper Title<small>(required)</small>
+            <label class="control-label font-weight-bold h5" for="title">
+              Paper Title <small>(required)</small>
             </label>
             <!-- <input
               class="form-control"
@@ -40,6 +40,8 @@
                 formControlName="title"
                 name="title"
                 id="title"
+                placeholder="Please, write the title of the paper here."
+
               >
               </ng-autocomplete>
 
@@ -75,14 +77,14 @@
         <div class="w-100 mt-0">
           <form [formGroup]="form" class="col-md-12 mt-0">
             <!--            <label>title: </label>-->
-            <label class="control-label font-weight-bold h4" for="name">
-              Name of Journal/Conference
+            <label class="control-label font-weight-bold h5" for="name">
+              Journal/Conference
             </label>
             <input
               class="form-control"
               name="name"
               id="name"
-              placeholder="Please, write the name of journal/conference."
+              placeholder="You can write the name of the journal/conference here."
               [(ngModel)]="question.name"
               formControlName="name"
             />
@@ -98,15 +100,15 @@
         <div class="w-100 mt-4">
           <form [formGroup]="form" class="col-md-12 mt-0">
             <!--            <label>title: </label>-->
-            <label class="control-label font-weight-bold h4" for="year">
-              Year Of The Paper
+            <label class="control-label font-weight-bold h5" for="year">
+              Publication Date
             </label>
             <input
               class="form-control"
               type="date"
               name="year"
               id="year"
-              placeholder="Please, write the year of the paper."
+              placeholder="You can select the publication date of the paper here."
               [(ngModel)]="question.year"
               formControlName="year"
               [max]="getToday()"
@@ -124,7 +126,7 @@
           <form [formGroup]="form" class="col-md-12 mt-0">
             <!--            <label>title: </label>-->
             <label
-              class="control-label font-weight-bold h4"
+              class="control-label font-weight-bold h5"
               for="firstAuthorName"
             >
               First Author's Name
@@ -133,7 +135,7 @@
               class="form-control"
               name="firstAuthorName"
               id="firstAuthorName"
-              placeholder="Please, write the first Author's Name."
+              placeholder="You can write the first author's name here."
               [(ngModel)]="question.firstAuthorName"
               formControlName="firstAuthorName"
             />
@@ -148,8 +150,8 @@
 
         <div class="col-md-12" *ngIf="showEditor">
           <!--          <label>body: </label>-->
-          <label class="control-label font-weight-bold h4" for="body">
-            Request Description<small>(required)</small>
+          <label class="control-label font-weight-bold h5" for="body">
+            Request Description <small>(required)</small>
           </label>
           <ckeditor
             [editor]="Editor"
@@ -157,7 +159,7 @@
               toolbar: ['blockquote', 'bold', 'italic', 'heading'],
               height: '500px',
               placeholder:
-                'You can write a short description about your request here.'
+                'Please, write a short description about your request here.'
             }"
             [data]="question.body"
             (change)="changeInBody($event)"
@@ -168,8 +170,8 @@
 
         <div class="col-md-12 row pl-0">
           <div class="col-md-9" *ngIf="showTags">
-            <label class="control-label font-weight-bold h4" for="body">
-              Tags<small>(required)</small>
+            <label class="control-label font-weight-bold h5" for="body">
+              Tags <small>(required)</small>
             </label>
             <ng-select
               (change)="setTag($event)"
@@ -179,7 +181,7 @@
               [(ngModel)]="selectedTagList"
               bindLabel="title"
               bindValue="id"
-              [placeholder]="'Choose the related tags'"
+              [placeholder]="'Please, choose at least three tags.'"
             ></ng-select>
           </div>
           <button
@@ -189,7 +191,7 @@
             data-target="#tagModal"
           >
             <i class="fa fa-plus"></i>
-            Create tag
+            Create Tag
           </button>
         </div>
       </div>

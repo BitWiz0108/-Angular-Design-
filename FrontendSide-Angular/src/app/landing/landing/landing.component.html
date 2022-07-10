@@ -19,10 +19,10 @@
                     </div>
                 </div>
                 <div *ngIf="showTextSearch">
-                    <input type="text" id="myFilter" [(ngModel)]="term" placeholder="Search for paper title" (keyup.enter)="search()" (change)="search()" class="form-control">
+                    <input type="text" id="myFilter" [(ngModel)]="term" placeholder="Search by Paper Title" (keyup.enter)="search()" (change)="search()" class="form-control">
                 </div>
                 <div *ngIf="!showTextSearch" class="tagsInput">
-                    <ng-select (change)="setTag($event)" [items]="tagList" [multiple]="true" name="tagDropDown" [(ngModel)]="selectedTagList" bindLabel="title" bindValue="id" [maxSelectedItems]="3" [placeholder]="'Choose 3 Tags'" class="tags-selector"></ng-select>
+                    <ng-select (change)="setTag($event)" [items]="tagList" [multiple]="true" name="tagDropDown" [(ngModel)]="selectedTagList" bindLabel="title" bindValue="id" [maxSelectedItems]="3" [placeholder]="'Choose a Maximum of 3 Tags'" class="tags-selector"></ng-select>
                 </div>
 
             </div>

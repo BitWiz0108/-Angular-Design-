@@ -8,7 +8,7 @@
                     <form [formGroup]="form">
                         <div class="form-group">
                             <label for="title">
-                Title of the Paper <small>(required)</small></label
+                Paper Title <small>(required)</small></label
               >
               <!-- <input
                 type="text"
@@ -31,6 +31,7 @@
                   [notFoundTemplate]="notFoundTemplate"
                   [(ngModel)]="uploadPresentation.title"
                   formControlName="title"
+                  placeholder="Please, write the title of the paper here."
                   name="title"
                   id="title"
                 >
@@ -47,26 +48,26 @@
             </div>
             {{ question.title }}
             <div class="form-group">
-              <label for="body"> Description <small>(required)</small> </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="body" formControlName="body" name="body" [(ngModel)]="uploadPresentation.body" placeholder="Please, write the description of the paper here(max 250 characters)."></textarea>
+              <label for="body"> Paper Description <small>(required)</small> </label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="body" formControlName="body" name="body" [(ngModel)]="uploadPresentation.body" placeholder="Please, write the description of the paper here (max 250 characters)."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="name">
-                Journal/Conference <small>(optional)</small>
+                Journal/Conference <small></small>
               </label>
-                            <input type="text" class="form-control" id="name" formControlName="name" name="name" [(ngModel)]="uploadPresentation.name" placeholder="Please, write the journal/conference of the paper here." />
+                            <input type="text" class="form-control" id="name" formControlName="name" name="name" [(ngModel)]="uploadPresentation.name" placeholder="Please, write the name of the journal/conference here." />
                         </div>
                         <div class="form-group">
                             <label for="yearOfPaper">
-                Year of the Paper <small>(optional)</small>
+                Publication Date <small></small>
               </label>
-                            <input type="date" class="form-control" id="yearOfPaper" formControlName="yearOfPaper" name="yearOfPaper" [(ngModel)]="uploadPresentation.yearOfPaper" placeholder="Please, write the year of the paper here." [max]="getToday()" />
+                            <input type="date" class="form-control" id="yearOfPaper" formControlName="yearOfPaper" name="yearOfPaper" [(ngModel)]="uploadPresentation.yearOfPaper" placeholder="Please, write the publication date of the paper here." [max]="getToday()" />
                         </div>
                         <div class="form-group">
                             <label for="firstAuthorName">
-                First Author's Name <small>(optional)</small>
+                First Author's Name <small></small>
               </label>
-                            <input type="text" class="form-control" id="firstAuthorName" formControlName="firstAuthorName" name="firstAuthorName" [(ngModel)]="uploadPresentation.firstAuthorName" placeholder="Please, write the first author name of the paper here." />
+                            <input type="text" class="form-control" id="firstAuthorName" formControlName="firstAuthorName" name="firstAuthorName" [(ngModel)]="uploadPresentation.firstAuthorName" placeholder="You can write the name of the first author here." />
                         </div>
                         <div class="form-group">
                             <div class="custom-checkbox" style="display: flex">
@@ -75,26 +76,26 @@
                                 </div>
                                 <div>
                                     <label for="iAmTheAuthor">
-                    &nbsp; I am the author <small>(optional)</small>
+                    &nbsp; I am the author <small></small>
                   </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" *ngIf="!uploadedFilePath">
-                            <label for="presentationLink">Presentation Link </label>
-                            <input type="text" class="form-control" id="presentationLink" formControlName="presentationLink" name="presentationLink" [(ngModel)]="uploadPresentation.presentationLink" placeholder="Please, write the presentation link of the paper here." />
+                            <label for="presentationLink">Presentation Link (from YouTube) </label>
+                            <input type="text" class="form-control" id="presentationLink" formControlName="presentationLink" name="presentationLink" [(ngModel)]="uploadPresentation.presentationLink" placeholder="You can add the link to your presentation here." />
                             <!-- <i
                 class="fa fa-spin fa-spinner btn-loading-bar"
                 *ngIf="loading"
               ></i> -->
                         </div>
                         <div class="form-group">
-                            <label for=""> Upload a Presentation</label>
+                            <label for=""> Upload a Video Presentation</label>
 
                             <div class="input-group mb-3">
                                 <div class="custom-file">
                                     <input [disabled]="uploadPresentation.presentationLink" type="file" class="custom-file-input" id="uploadedFilePath" accept="video/mp4,video/x-m4v,video/*" (change)="onChange($event)" />
-                                    <label class="custom-file-label" for="uploadedFilePath">Choose file <small>(Max size is 50mb)</small
+                                    <label class="custom-file-label" for="uploadedFilePath">You can upload your presentation file here. <small>(Max size is 50MB)</small
                     ><i
                       class="fa fa-spin fa-spinner btn-loading-bar"
                       *ngIf="loading"
@@ -106,9 +107,9 @@
                         </div>
                         <div class="form-group">
                             <div *ngIf="showTags">
-                                <label for=""> Tags<small>(required)</small> </label>
+                                <label for=""> Tags <small>(required)</small> </label>
                                 <div class="input-group mb-3">
-                                    <ng-select style="width: 70%" (change)="setTag($event)" [items]="tagList" [multiple]="true" name="gfdfsdf" formControlName="selectedTagList" [(ngModel)]="selectedTagList" bindLabel="title" bindValue="id" [placeholder]="'Choose the related tags'"></ng-select>
+                                    <ng-select style="width: 70%" (change)="setTag($event)" [items]="tagList" [multiple]="true" name="gfdfsdf" formControlName="selectedTagList" [(ngModel)]="selectedTagList" bindLabel="title" bindValue="id" [placeholder]="'Please, select at least three tags.'"></ng-select>
                                     <button type="button" style="margin-left: 1em" class="btn btn-save createTagBtn" data-toggle="modal" data-target="#tagModal">
                     <i class="fa fa-plus"></i>
                     Create tag
@@ -200,7 +201,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Presentation Link</td>
+                        <td>Presentation Link (from YouTube)</td>
                         <td class="ml-3">
                             {{ this.uploadPresentation.presentationLink ? this.uploadPresentation.presentationLink : "" }}
                         </td>
@@ -208,7 +209,7 @@
                 </table>
 
                 <div class="mt-3 ml-1">
-                    <b>Description:</b>
+                    <b>Description</b>
                     <div class="d-flex flex-row align-items-center" style="justify-content: center" *ngIf="showBody">
                         <div id="questionBody" class="question-body pl-2"></div>
 

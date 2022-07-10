@@ -57,7 +57,7 @@
             class="fa fa-trash text-muted cursor-pointer"
             *ngIf="checkDeletePermission()"
             (click)="areYouSure('question')"
-            >delete</i
+            > delete</i
           >
         </ng-container>
         <i class="fa fa-thumbs-up mr-4" (click)="updateQuestionUsefulCount()">
@@ -82,7 +82,7 @@
       I have a presentation for this paper
     </button>
   </div>
- 
+
 <div class="card-body" *ngIf="showBody">
     <div class="col-md-12">
       <div class="d-flex flex-column">
@@ -216,7 +216,7 @@
       <p class="text-muted">{{ item.systemCreationDate | date }}</p>
       <p class="text-muted">{{ item.authorCheck ? 'I am author':''}}</p>
     </div>
-   
+
     <div class="">
       <!-- <i
         *ngIf="
@@ -247,17 +247,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tagModalLabel">Are you sure?</h5>
+                    <h5 class="modal-title" id="tagModalLabel">Are you sure you want to delete this presentation/request?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" (click)="selectedAnswerForDelete = ''" id="closeAreYouSureModal" data-dismiss="modal">
-            Cancel
+            Cancel.
           </button>
                     <button type="button" class="btn btn-save" (click)="doDelete()" [disabled]="deleteLoading">
-            Delete answer
+            Yes, I am sure.
             <i
               class="fa fa-spin fa-spinner btn-loading-bar"
               *ngIf="deleteLoading"
@@ -272,7 +272,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Report</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Report this presentation</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -280,7 +280,7 @@
                 <div class="modal-body" *ngIf="!reportIssueCheck">
                     <form>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Please write your issue<small>(Required)</small></label
+                            <label for="exampleFormControlTextarea1">Please, explain why you are reporting this presentation. <small>(Required)</small></label
               >
               <textarea
                 class="form-control"

@@ -179,7 +179,7 @@ export class MyPresentationComponent implements OnInit {
     if (this.uploadPresentation.presentationLink.split('youtube').length < 2) {
       this.notifier.notify(
         'error',
-        'Dear' + this.user.displayName + ', video link should be from youtube.'
+        'The video link is not valid.'
       );
       this.uploadPresentation.presentationLink = '';
       return false;
@@ -315,7 +315,7 @@ export class MyPresentationComponent implements OnInit {
       this.loading = false;
       this.notifier.notify(
         'error',
-        'Must provide a presentation link or upload a presentation'
+        'You must either provide the YouTube link to your presentation or upload your presentation file.'
       );
       return;
     }

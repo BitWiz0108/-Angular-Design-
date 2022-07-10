@@ -53,11 +53,11 @@ export class AnswerActionComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     if(this.mode === this.actionMode.EDIT){
       this.answer.videoLink = "";
     }
-    
+
     setTimeout(() => {
       this.showBody = true;
     }, 1000);
@@ -65,7 +65,7 @@ export class AnswerActionComponent implements OnInit {
 
   onChange(event) {
     this.loading = true;
-    let file = event.target.files[0]; 
+    let file = event.target.files[0];
 
     if (file.size < 50 * 1024 * 1024) {
       // Create form data
@@ -151,8 +151,8 @@ export class AnswerActionComponent implements OnInit {
     }
   }
 
-  preview() { 
-     
+  preview() {
+
     this.loading = true;
     this.answer.uploadedPresentation = this.uploadedFilePath;
     if (
@@ -168,7 +168,7 @@ export class AnswerActionComponent implements OnInit {
       this.loading = false;
       this.notifier.notify(
         'error',
-        'Must provide a presentation link or upload a presentation'
+        'You must either provide the YouTube link to your presentation or upload your presentation file.'
       );
       return;
     }
@@ -185,7 +185,7 @@ export class AnswerActionComponent implements OnInit {
     }
     if (this.form.invalid) {
       this.loading = false;
-      this.notifier.notify('error', 'Video link is not valid.');
+      this.notifier.notify('error', 'The video link is not valid.');
       return;
     }
     if (this.answer.videoLink) {
