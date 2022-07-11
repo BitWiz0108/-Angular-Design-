@@ -6,7 +6,7 @@
 
 # DB setup on local
 - Install Mongo compass 
-- Create Database with name : quAnswer
+- Create Database with name : mainDatabase
 - Create Collections: question, signupRequest, tag, user
 - Import sample records from src/test/resources for respective collections (Click on 'ADD DATA' green button from Mongo DB Compass and Select 'Import File' option
 

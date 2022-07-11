@@ -14,7 +14,7 @@ spring:
     allow-bean-definition-overriding: true
   data:
     mongodb:
-      database: quAnswer
+      database: mainDatabase
       port: 27017
       host: localhost
   servlet:

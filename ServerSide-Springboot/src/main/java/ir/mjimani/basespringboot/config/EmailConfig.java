@@ -20,21 +20,21 @@ public class EmailConfig {
     public static String getMessageForRequestSignup(String code) {
         return "Dear User,\n" +
                 "\n" +
-                "You registered an account on www.ButShowMe.com. Before being able to use your account you need to verify that this is your email address by clicking here:\n" +
+                "You registered an account on www.referensee.com. Before being able to use your account you need to verify that this is your email address by clicking here:\n" +
                 CLIENT_SIDE_LINK + code + "\n" +
                 "\n" +
                 "Please notice that the link will expire within 2 hours. After 2 hours, you must submit a new request.\n" +
                 "\n" +
-                "If you did not register on ButShowMe.com, ignore this email.\n" +
+                "If you did not register on www.referensee.com, ignore this email.\n" +
                 "\n" +
                 "Kind Regards,\n" +
-                "ButShowMe Support Team";
+                "Referensee Support Team";
     }
 
     public static String getMessageForForgotPassword(String displayName, String code) {
         return "Dear " + displayName + ",\n" +
                 "\n" +
-                "We received your request to reset your www.ButShowMe.com password. To continue, please click here: \n" +
+                "We received your request to reset your www.referensee.com password. To continue, please click here: \n" +
                 CLIENT_SIDE_LINK + code + "\n" +
                 "\n" +
                 "Please notice that the link will expire within 24 hours. After 24 hours, you must submit a new password reset request.\n" +
@@ -42,6 +42,6 @@ public class EmailConfig {
                 "If you did not request for a password reset, ignore this email.\n" +
                 "\n" +
                 "Kind Regards,\n" +
-                "ButShowMe Support Team";
+                "Referensee Support Team";
     }
 }
