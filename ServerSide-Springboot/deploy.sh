@@ -22,5 +22,5 @@ if [ "$pro" == "local" ]; then
 elif [ "$pro" == "prod" ]; then
   echo 'sdsds'
 elif [ "$pro" == "test" ]; then
-  scp -P 10022 target/*.jar root@mahdavi-bzums.ir:/home/deploy/quAnswer/quAnswer.jar
+  scp -P 10022 target/*.jar root@mahdavi-bzums.ir:/home/deploy/referensee/referensee.jar
 fi

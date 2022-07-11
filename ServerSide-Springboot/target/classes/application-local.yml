@@ -6,7 +6,7 @@ jwt:
   expiration: 999999
 spring: 
   application:
-    name: quAnswer
+    name: referensee
 #  profiles: 
 #    active: local
   main:

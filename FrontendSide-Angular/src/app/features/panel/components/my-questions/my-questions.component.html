@@ -63,9 +63,9 @@
         <div class="loading-box" *ngIf="!loading && !questionList.length">
             <p class="alert-dark p-2">
                 <ng-container *ngIf="status === 'myAnswers'; else withOutTerm">
-                    Sorry. We found no result.
+                    Sorry. We found no results.
                 </ng-container>
-                <ng-template #withOutTerm> Sorry. We found no result. </ng-template>
+                <ng-template #withOutTerm> Sorry. We found no results. </ng-template>
             </p>
         </div>
 
