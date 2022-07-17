@@ -30,9 +30,9 @@ import ir.mjimani.basespringboot.tools.db.CommonQuery;
 import ir.mjimani.basespringboot.tools.db.CustomMongoTemplate;
 
 /**
- * @author Parvin at 2021-06-11
- * email: 
- * 
+ * @author MjImani at 2021-06-11
+ * email : mjimani.ir@gmail.com
+ * phone : +989191414931
  * Spring Data MongoDB dao interface for the Question entity.
  */
 @Repository
@@ -156,7 +156,7 @@ public class QuestionDaoImpl extends CustomMongoTemplate<Question> implements Qu
             LocalDate today = LocalDate.now(z);
             LocalDate ago_30 = today.minus(days_30);
 
-            return entityQuery().with(pageable).include(fields).sortSystemCreationDateDESC().findBetweenDates(ago_30, today,liked);
+            return entityQuery().with(pageable).include(fields).findBetweenDates(ago_30, today,liked);
 
         } else {
             return entityQuery().with(pageable).include(fields).sortSystemCreationDateDESC().find();
