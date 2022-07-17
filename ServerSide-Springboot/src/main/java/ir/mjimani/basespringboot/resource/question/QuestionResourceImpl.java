@@ -21,7 +21,7 @@ import ir.mjimani.basespringboot.service.user.point.UserPoint;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author MjImani at 2021-06-11 email : mjimani.ir@gmail.com phone :
+ * @author Parvin at 2021-06-11 email:  phone :
  * +989191414931 Spring rest controller implementation for the Question
  * entity.
  */

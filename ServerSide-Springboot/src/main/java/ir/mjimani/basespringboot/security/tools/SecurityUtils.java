@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.Collection;
 
 /**
- * @author Mj Imani
+ * @author Parvin
  */
 public class SecurityUtils {
 

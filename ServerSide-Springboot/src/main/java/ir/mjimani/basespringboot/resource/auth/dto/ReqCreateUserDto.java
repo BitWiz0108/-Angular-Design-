@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @author MjImani at 2021-06-08
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-08
+ * email: 
+ * 
  */
 @Setter
 @Getter

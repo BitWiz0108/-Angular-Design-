@@ -31,7 +31,7 @@ import ir.mjimani.basespringboot.domain.user.User;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author MjImani at 2021-08-05 email : mjimani.ir@gmail.com phone :
+ * @author Parvin at 2021-08-05 email:  phone :
  *         +989191414931 Spring service implementation for the Email.
  */
 @Service

@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
 /**
- * @author MjImani at 2021-06-01 email : mjimani.ir@gmail.com phone :
+ * @author Parvin at 2021-06-01 email:  phone :
  *         +989191414931 Spring service implementation for the User entity.
  */
 @Service

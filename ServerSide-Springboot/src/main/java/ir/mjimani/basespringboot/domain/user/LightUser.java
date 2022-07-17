@@ -11,9 +11,9 @@ import lombok.Data;
 
 
 /**
- * @author MjImani at 2021-06-17
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-17
+ * email: 
+ * 
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -1,9 +1,9 @@
 package ir.mjimani.basespringboot.config;
 
 /**
- * @author MjImani at 2021-08-06
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-06
+ * email: 
+ * 
  */
 public class EmailConfig {
 

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 /**
- * @author MjImani at 2021-08-05
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-05
+ * email: 
+ * 
  * Spring Data MongoDB dao interface for the {@link SignupRequest} entity.
  */
 @Repository

@@ -1,9 +1,9 @@
 package ir.mjimani.basespringboot.tools.validation;
 
 /**
- * @author MjImani at 2021-08-05
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-05
+ * email: 
+ * 
  * Pattern list.
  */
 public class PatternList {

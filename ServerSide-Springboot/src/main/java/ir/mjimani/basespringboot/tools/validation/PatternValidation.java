@@ -4,9 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author MjImani at 2021-08-05
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-05
+ * email: 
+ * 
  * Pattern list.
  */
 public class PatternValidation {

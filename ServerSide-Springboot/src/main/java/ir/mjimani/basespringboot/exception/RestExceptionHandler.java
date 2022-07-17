@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 /**
- * @author MjImani at 2021-06-17
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-17
+ * email: 
+ * 
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
