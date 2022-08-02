@@ -12,10 +12,10 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-12" *ngIf="showBody">
+                <div class="col-md-12 " >
                     <ckeditor [editor]="Editor2" [config]="{
               toolbar: ['blockquote', 'bold', 'italic', 'heading'],
-              placeholder: 'Add a text with a maximum of 250 characters . . .'
+              placeholder: 'You can describe your presentation here (max 250 characters).'
             }" [data]="answer.body" (change)="changeInBody($event)"></ckeditor>
                 </div>
                 <form [formGroup]="form" class="col-md-12 d-flex mt-2">
@@ -37,7 +37,7 @@
               </label>
                             <div class="custom-file">
                                 <input [disabled]="answer.videoLink" class="custom-file-input ml-5" type="file" id="uploadedPresentation" accept="video/mp4,video/x-m4v,video/*" (change)="onChange($event)" />
-                                <label class="custom-file-label" style="width: 96%; margin-left: 2em" for="uploadedFilePath">Choose file <small>(Max size is 50mb)</small
+                                <label class="custom-file-label" style="width: 96%; margin-left: 2em" for="uploadedFilePath">Choose a file <small>(Max size is 50MB)</small
                   ><i
                     class="fa fa-spin fa-spinner btn-loading-bar"
                     *ngIf="loading"
@@ -69,7 +69,7 @@
                                 </div>
                                 <div>
                                     <label for="iAmTheAuthor">
-                  &nbsp; I am the author <small>(optional)</small>
+                  &nbsp; I am the author <small></small>
                 </label>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="previewModalLabel">Answer Preview</h5>
+                <h5 class="modal-title" id="previewModalLabel">Presentation Preview</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -106,30 +106,43 @@
                 <!--        <div class="col-md-12" *ngIf="showPreview">-->
                 <!--          <ckeditor [config]="{toolbar: []}" [editor]="Editor2" [disabled]="true" [data]="answer.body"></ckeditor>-->
                 <!--        </div>-->
-                <table class="ml-4">
-                    <tr>
-                        <!-- <td> Description</td> -->
 
-                        <td class="ml-3">
-                            <div id="answer-body"></div>
-                        </td>
-                    </tr>
+              <div>Presentation Description:
+              </div>
+                <div id="answer-body"></div>
+
+              <table class="ml-4">
+<!--                    <tr>-->
+<!--                        &lt;!&ndash; <td> Description</td> &ndash;&gt;-->
+
+<!--                        <td class="ml-3">-->
+<!--                            <div id="answer-body"></div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
 
                     <tr>
-                        <td>I am Author: </td>
+                        <td>I am the author:  </td>
                         <td class="ml-3" style="color: #7b7b7b">
                             {{ this.answer.authorCheck ? "Yes" : "No" }}
                         </td>
                     </tr>
 
+
+                  <tr>
+                    <td>                    {{ uploadedFileName ? "Uploaded video file : " : "" }} </td>
+                    <td class="ml-3" style="color: #7b7b7b">
+                      {{ this.answer.uploadedPresentation ? uploadedFileName : "" }}
+                    </td>
+                  </tr>
+
                 </table>
-                <div class="ml-4">
-                    {{ uploadedFileName ? "Uploaded Video Name:" : "" }}
-                </div>
-                <div class="col-md-12" *ngIf="uploadedFileName" style="color: #7b7b7b">
-                    {{ this.answer.uploadedPresentation ? uploadedFileName : "" }}
-                    <!--          <iframe height="90vh" *ngIf="answer.videoLink" style="height: 90vh!important;" width="100%" [src]="answer.videoLink" allowfullscreen></iframe>-->
-                </div>
+<!--                <div class="ml-4">-->
+<!--                    {{ uploadedFileName ? "Uploaded video file:" : "" }}-->
+<!--                </div>-->
+<!--                <div class="col-md-12" *ngIf="uploadedFileName" style="color: #7b7b7b">-->
+<!--                    {{ this.answer.uploadedPresentation ? uploadedFileName : "" }}-->
+<!--                    &lt;!&ndash;          <iframe height="90vh" *ngIf="answer.videoLink" style="height: 90vh!important;" width="100%" [src]="answer.videoLink" allowfullscreen></iframe>&ndash;&gt;-->
+<!--                </div>-->
                 <!-- <div id="answer-body">{{ this.answer.body }}</div> -->
                 <div class="col-md-12 video-section" id="video-section">
                     <!--          <iframe height="90vh" *ngIf="answer.videoLink" style="height: 90vh!important;" width="100%" [src]="answer.videoLink" allowfullscreen></iframe>-->

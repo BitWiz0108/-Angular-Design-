@@ -3,8 +3,8 @@
     <div class="column box-border">
         <h2 class="text-center font-weight-bold mt-3 mb-5" *ngIf="codeType === codeTypeEnum.SIGNUP">Sign up</h2>
         <h2 class="text-center font-weight-bold mt-3 mb-5" *ngIf="codeType === codeTypeEnum.FORGET_PASSWORD">Forget password</h2>
-      <small class="form-text text-center text-success" *ngIf="showSuccessMessage">
-        Dear user, we sent you a confirmation email, check user email address.
+        <small class="form-text text-center text-success" *ngIf="showSuccessMessage">
+        We sent you a confirmation email. Please, check your email.
       </small>
       <form [formGroup]="emailForm">
         <div class="form-group">
@@ -19,7 +19,7 @@
                   'is-invalid' : ((signUpClicked|| emailForm.controls['email'].touched) && emailForm.controls['email'].invalid)}">
           </div>
           <small class="form-text text-muted" *ngIf="(signUpClicked || emailForm.controls['email'].touched) &&
-           emailForm.controls['email'].hasError('required')">Please enter your email address.</small>
+           emailForm.controls['email'].hasError('required')">Please, enter your email address.</small>
           <small class="form-text text-muted" *ngIf="emailForm.controls['email'].hasError('pattern')">
             Please enter the email in the right pattern.
           </small>
@@ -37,7 +37,7 @@
           type="button"> login</a>
       </div>
       <p class="text-muted mt-5 text-center" *ngIf="codeType === codeTypeEnum.SIGNUP">
-        By clicking “Send verification email”, you agree to our <br/>
+        By clicking on “Send verification email”, you agree to our <br/>
         <a class="font-weight-bold color-primary"
            (click)="openModal('privacy-policy-modal')">
           privacy policy</a>

@@ -11,9 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author MjImani at 2021-06-06
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-06
+ * email: 
+ * 
  * Spring rest controller implementation for the User entity.
  */
 @RestController

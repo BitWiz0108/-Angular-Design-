@@ -7,9 +7,9 @@ import ir.mjimani.basespringboot.resource.auth.dto.ReqResetPasswordDto;
 import ir.mjimani.basespringboot.resource.auth.dto.ReqSignupRequestCreateDto;
 
 /**
- * @author MjImani at 2021-08-05
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-05
+ * email: 
+ * 
  * Spring service interface for the {@link SignupRequest} entity.
  */
 public interface SignupRequestService {

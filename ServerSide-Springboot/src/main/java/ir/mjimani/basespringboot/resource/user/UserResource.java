@@ -14,9 +14,9 @@ import ir.mjimani.basespringboot.exception.error.CustomException;
 import ir.mjimani.basespringboot.resource.general.dto.ResGeneralDto;
 
 /**
- * @author MjImani at 2021-06-06
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-06
+ * email: 
+ * 
  * Spring rest controller interface for the User entity.
  */
 @RequestMapping("api/users")

@@ -156,7 +156,7 @@ public class QuestionDaoImpl extends CustomMongoTemplate<Question> implements Qu
             LocalDate today = LocalDate.now(z);
             LocalDate ago_30 = today.minus(days_30);
 
-            return entityQuery().with(pageable).include(fields).sortSystemCreationDateDESC().findBetweenDates(ago_30, today,liked);
+            return entityQuery().with(pageable).include(fields).findBetweenDates(ago_30, today,liked);
 
         } else {
             return entityQuery().with(pageable).include(fields).sortSystemCreationDateDESC().find();

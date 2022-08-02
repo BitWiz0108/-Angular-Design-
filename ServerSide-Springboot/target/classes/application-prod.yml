@@ -6,7 +6,7 @@ jwt:
   expiration: 999999
 spring:
   application:
-    name: quAnswer
+    name: referensee
   profiles:
     active:
       - prod
@@ -23,7 +23,7 @@ user:
   tags: 
     notification: 
       cron: "0 0 2 * * *"
-      questionHyperLink: "https://www.quanswer.com/en/question/details?objectId="
+      questionHyperLink: "https://www.referensee.com/en/question/details?objectId="
 
       
 logging:

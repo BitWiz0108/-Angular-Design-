@@ -14,9 +14,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author MjImani at 2021-08-06
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-06
+ * email: 
+ * 
  * Spring rest controller interface for the Auth.
  */
 @RequestMapping("auth")

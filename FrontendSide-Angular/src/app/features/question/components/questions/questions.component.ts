@@ -45,7 +45,7 @@ export class QuestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cd.detectChanges();
-    this.activatedRoute.queryParams.subscribe((query: any) => { 
+    this.activatedRoute.queryParams.subscribe((query: any) => {
       this.config.currentPage = query.page ? query.page : 1;
       this.config.itemsPerPage = query.size ? query.size : 10;
       this.term = query.term ? query.term : '';
@@ -53,8 +53,8 @@ export class QuestionsComponent implements OnInit {
         ? query.selectedTagList.split(',')
         : [];
       this.totalCount = 0;
-      this.getQuestionList('');
-      
+      this.getQuestionList('',1);
+
     });
   }
 
@@ -79,10 +79,13 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  getQuestionList(liked: string) {
+  getQuestionList(liked: string,defaultPage:number) {
     this.loading = true;
     this.questionList = [];
     this.totalCount = 0;
+    if(defaultPage === 0){
+    this.config.currentPage = 1;
+    }
     this.questionService
       .getAllPageable(
         this.term,
@@ -92,8 +95,8 @@ export class QuestionsComponent implements OnInit {
         this.totalCount,
         liked
       )
-      .subscribe((res: any) => { 
-        
+      .subscribe((res: any) => {
+
         if (res && res.content && res.content.length) {
           this.loading = false;
           this.totalCount = res.totalElements;

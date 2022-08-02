@@ -8,9 +8,9 @@ import ir.mjimani.basespringboot.domain.question.Question;
 import ir.mjimani.basespringboot.exception.error.CustomException;
 
 /**
- * @author MjImani at 2021-06-17
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-17
+ * email: 
+ * 
  * Spring service interface for the Answer entity.
  */
 public interface AnswerService {

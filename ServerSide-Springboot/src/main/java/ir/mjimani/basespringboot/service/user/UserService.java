@@ -6,9 +6,9 @@ import ir.mjimani.basespringboot.exception.error.CustomException;
 import ir.mjimani.basespringboot.resource.auth.dto.ReqCreateUserDto;
 
 /**
- * @author MjImani at 2021-06-06
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-06
+ * email: 
+ * 
  * Spring service interface for the User entity.
  */
 public interface UserService {

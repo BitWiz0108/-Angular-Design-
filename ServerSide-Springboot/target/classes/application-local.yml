@@ -6,15 +6,15 @@ jwt:
   expiration: 999999
 spring: 
   application:
-    name: quAnswer
+    name: referensee
 #  profiles: 
 #    active: local
   main:
     allow-bean-definition-overriding: true
   data:
     mongodb:
-      uri: mongodb://localhost:27017/quAnswer?retryWrites=true&w=majority
-#      database: quAnswer
+      uri: mongodb://localhost:27017/mainDatabase?retryWrites=true&w=majority
+#      database: mainDatabase
 #      port: 27017
 #      host: mongoDb
   servlet:

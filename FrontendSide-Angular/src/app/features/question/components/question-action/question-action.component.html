@@ -231,9 +231,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <h3 class="color-primary font-weight-bold pl-2">
-          {{ question.title }}
-        </h3>
+        <!--        <h3 class="color-primary font-weight-bold pl-2">-->
+        <!--          {{ question.title }}-->
+        <!--        </h3>-->
 
         <!-- <div id="questionName" style="margin-left: 1rem; color: #7B7B7B;" class="question-body pl-3"></div>
                 <div id="questionYearOfPaper" style="margin-left: 2rem ; color: #7B7B7B;" class="question-body pl-3"></div>
@@ -241,31 +241,42 @@
 
         <table class="ml-4">
           <tr>
+
+            <td class="ml-6">
+
+              <b>Paper Title:</b>
+            </td>
+
+            <td class="ml-6">
+              {{ question.title }}
+            </td>
+          </tr>
+          <tr>
             <td>Journal/Conference</td>
             <td class="ml-6">
               {{ this.question.name ? this.question.name : "" }}
             </td>
           </tr>
           <tr>
-            <td>Year of the Paper</td>
+            <td>Publication Date:</td>
             <td class="ml-6">
               {{ this.question.year ? this.question.year : "" }}
             </td>
           </tr>
           <tr>
-            <td>First Author's Name</td>
+            <td>First Author's Name:</td>
             <td class="ml-6">
               {{
-                this.question.firstAuthorName
-                  ? this.question.firstAuthorName
-                  : ""
+              this.question.firstAuthorName
+              ? this.question.firstAuthorName
+              : ""
               }}
             </td>
           </tr>
         </table>
 
         <div class="mt-3 ml-1">
-          <b>Description:</b>
+          <b>Request Description:</b>
           <div
             class="d-flex flex-row align-items-center"
             style="justify-content: center"

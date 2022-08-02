@@ -6,7 +6,7 @@ jwt:
   expiration: 999999
 spring:
   application:
-    name: quAnswer
+    name: referensee
   profiles:
     active:
       - test
@@ -14,7 +14,7 @@ spring:
     allow-bean-definition-overriding: true
   data:
     mongodb:
-      database: quAnswer
+      database: mainDatabase
       port: 27017
       host: localhost
   servlet:

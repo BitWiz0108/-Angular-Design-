@@ -7,9 +7,9 @@ import ir.mjimani.basespringboot.domain.user.User;
 import ir.mjimani.basespringboot.exception.error.CustomException;
 
 /**
- * @author MjImani at 2021-06-06
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-06
+ * email: 
+ * 
  * Spring Data MongoDB dao interface for the User entity.
  */
 public interface UserDao {

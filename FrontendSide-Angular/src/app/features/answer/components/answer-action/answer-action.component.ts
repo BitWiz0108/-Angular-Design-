@@ -86,7 +86,7 @@ export class AnswerActionComponent implements OnInit {
         }
       );
     } else {
-      this.notifier.notify('error', 'Max File Size Exceeds');
+      this.notifier.notify('error', 'Maximum file size exceeded.');
     }
   }
 
@@ -242,7 +242,7 @@ export class AnswerActionComponent implements OnInit {
     ) {
       this.notifier.notify(
         'error',
-        'You should enter answer body with 1 to 250 characters.'
+        'The description can have a maximum of 250 characters.'
       );
       return;
     }

@@ -5,9 +5,9 @@
 //import org.springframework.stereotype.Service;
 //
 ///**
-// * @author MjImani at 2021-06-11
-// * email : mjimani.ir@gmail.com
-// * phone : +989191414931
+// * @author Parvin at 2021-06-11
+// * email: 
+// * 
 // * Spring service implementation for the Question entity.
 // */
 //@Service

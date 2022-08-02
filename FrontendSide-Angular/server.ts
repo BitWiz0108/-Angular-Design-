@@ -11,7 +11,7 @@ import { existsSync } from 'fs';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/quanswer/browser');
+  const distFolder = join(process.cwd(), 'dist/referensee/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
   const domino = require('domino');
   const win = domino.createWindow(indexHtml);

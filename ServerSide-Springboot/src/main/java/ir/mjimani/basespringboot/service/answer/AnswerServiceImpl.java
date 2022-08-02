@@ -24,9 +24,9 @@ import ir.mjimani.basespringboot.tools.Print;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author MjImani at 2021-06-17
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-06-17
+ * email: 
+ * 
  * Spring service implementation for the Answer entity.
  */
 @Service

@@ -19,9 +19,9 @@ import java.util.Date;
 import static ir.mjimani.basespringboot.tools.GenerateRandomChars.generateRandomDigits;
 
 /**
- * @author MjImani at 2021-08-05
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-05
+ * email: 
+ * 
  * Spring service implementation for the {@link SignupRequest} entity.
  */
 @Service

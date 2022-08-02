@@ -171,7 +171,7 @@ export class MyPresentationComponent implements OnInit {
         }
       );
     } else {
-      this.notifier.notify('error', 'Max File Size Exceeds');
+      this.notifier.notify('error', 'Maximum file size exceeded.');
     }
   }
 

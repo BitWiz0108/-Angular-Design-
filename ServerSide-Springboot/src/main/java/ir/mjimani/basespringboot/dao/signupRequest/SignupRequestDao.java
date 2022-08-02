@@ -5,9 +5,9 @@ import ir.mjimani.basespringboot.domain.signupRequest.SignupRequest;
 import ir.mjimani.basespringboot.exception.error.CustomException;
 
 /**
- * @author MjImani at 2021-08-05
- * email : mjimani.ir@gmail.com
- * phone : +989191414931
+ * @author Parvin at 2021-08-05
+ * email: 
+ * 
  * Spring Data MongoDB dao interface for the {@link SignupRequest} entity.
  */
 public interface SignupRequestDao {

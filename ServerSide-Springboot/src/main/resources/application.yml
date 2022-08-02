@@ -9,9 +9,9 @@ spring:
     allow-bean-definition-overriding: true
   data:
     mongodb:
-      uri: mongodb://localhost:27017/quAnswer?retryWrites=true&w=majority
+      uri: mongodb://localhost:27017/mainDatabase?retryWrites=true&w=majority
       #uri: mongodb+srv://mjimani:1LexeQUft25dtbXW@cluster0.pysa4.mongodb.net/TestAtlas?retryWrites=true&w=majority
-  #      database: quAnswer
+  #      database: mainDatabase
   #      port: 27017
   #      host: localhost
   #      host: mongoDb

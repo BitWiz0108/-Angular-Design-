@@ -9,9 +9,9 @@ if [ $1 ]; then
   echo "package ir.mjimani.basespringboot.domain.$1;" >$link/$1.java
   echo "" >>$link/$1.java
   echo "/**" >>$link$1/$1.java
-  echo "* @author MjImani at $TodayDate" >>$link/$1.java
-  echo "* email : mjimani.ir@gmail.com" >>$link/$1.java
-  echo "* phone : +989191414931" >>$link/$1.java
+  echo "* @author Parvin at $TodayDate" >>$link/$1.java
+  echo "* email: " >>$link/$1.java
+  echo "* " >>$link/$1.java
   echo "*/" >>$link/$1.java
   echo "@Setter" >>$link/$1.java
   echo "@Getter" >>$link/$1.java
