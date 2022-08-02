@@ -14,7 +14,7 @@ public interface ReportIssueService {
 
     Boolean delete(String id) throws CustomException;
 
-    ReportIssue getOne(String id) throws CustomException;
+    List<ReportIssue> getOneList(String id) throws CustomException;
 
     ReportIssue getOneByAnswerId(String id) throws CustomException;
 

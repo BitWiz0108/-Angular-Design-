@@ -1,6 +1,7 @@
 package ir.mjimani.basespringboot.dao.reporting;
 
 import ir.mjimani.basespringboot.domain.general.GeneralDomain;
+import ir.mjimani.basespringboot.domain.question.Question;
 import ir.mjimani.basespringboot.domain.reporting.ReportIssue;
 import ir.mjimani.basespringboot.exception.error.CustomException;
 import ir.mjimani.basespringboot.security.model.JwtUser;
@@ -60,10 +61,8 @@ public class ReportIssueDaoImpl extends CustomMongoTemplate<ReportIssue> impleme
 
 
     @Override
-    public ReportIssue getOne(String qId) throws CustomException {
-        return entityQuery()
-                .is(ReportIssue.FN.paperId, qId)
-                .findOne();
+    public List<ReportIssue> getOneList(String qId) throws CustomException {
+        return entityQuery().regex(ReportIssue.FN.paperId , qId).find();
     }
 
     @Override
