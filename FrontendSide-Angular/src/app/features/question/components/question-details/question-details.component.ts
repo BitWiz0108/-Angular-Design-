@@ -29,7 +29,8 @@ declare var $;
 })
 export class QuestionDetailsComponent implements OnInit {
   issue: string;
-  reportIssueCheck;
+  reportIssueCheck = false;
+  reportIssueList: ReportIssue.Action[] = [];
   public Editor = ClassicEditor;
   question: Question.Action = new Question.Action();
   showBody = false;
@@ -43,6 +44,7 @@ export class QuestionDetailsComponent implements OnInit {
   answerList: Answer.Action[] = [];
   commentsList = [];
   reportIssue = new ReportIssue.Action();
+
   public commentsConfig: PaginationInstance = {
     id: 'commentsList',
     itemsPerPage: 3,
@@ -100,17 +102,10 @@ export class QuestionDetailsComponent implements OnInit {
     if (this.question.id !== undefined) {
       this.reportIssueService
         .getOne(this.question.id)
-        .subscribe((res: ReportIssue.Action) => {
+        .subscribe((res:any ) => {
           if (res) {
-            if (res.id) {
-              if (res.id != '') {
-                this.reportIssueCheck = true;
-              }
-            } else {
-              this.reportIssueCheck = false;
-            }
-          } else {
-            this.reportIssueCheck = false;
+            this.reportIssueList = res;
+              // this.reportIssueCheck = false;
           }
         });
 
@@ -166,6 +161,29 @@ export class QuestionDetailsComponent implements OnInit {
     }
   }
 
+  checkReport(item){
+    this.reportIssue.videoId = item.id;
+    if(item.bugReport === "Yes"){
+      this.reportIssueCheck = true;
+    }else{
+      this.reportIssueCheck = false;
+    }
+
+
+    // for (let index = 0; index < this.reportIssueList.length; index++) {
+    //   const element = this.reportIssueList[index];
+
+    //   if(element.videoId === item.id){
+    //     console.log("item ",item.id + " element ",element.videoId);
+    //     this.reportIssueCheck = true;
+    //     continue;
+    //   }else{
+    //     this.reportIssueCheck = false;
+    //   }
+    // }
+
+  }
+
   sortAnswerAndCreateVideos(currentPage) {
     this.answerList = [];
     this.config.currentPage = currentPage;
@@ -207,14 +225,14 @@ export class QuestionDetailsComponent implements OnInit {
       if (
         this.question.answerList[i] &&
         this.question.answerList[i].uploadedPresentation
-      ) { 
+      ) {
         this.answerList.push(this.question.answerList[i]);
         if (i % 2 == 0) {
           index++;
         }
- 
-        if (Math.abs(i % 2) == 1) { 
-          setTimeout(() => { 
+
+        if (Math.abs(i % 2) == 1) {
+          setTimeout(() => {
             if (this.answerList[i]) {
               var splitPath =
                 this.answerList[i - 1].uploadedPresentation.split('\\');
@@ -243,7 +261,7 @@ export class QuestionDetailsComponent implements OnInit {
                 : '';
             }
           }, 1 * 300);
-        } else { 
+        } else {
           setTimeout(() => {
             var splitPath =
               this.answerList[index].uploadedPresentation.split('\\');
@@ -477,7 +495,7 @@ export class QuestionDetailsComponent implements OnInit {
                 this.canAnswer = true;
               }
               $('#closeAreYouSureModal').click();
-             
+
               setTimeout(() => {
                 if (this.question.answerList.length % 2 == 0) {
                   this.onPageChange(this.page - 1);
@@ -516,7 +534,7 @@ export class QuestionDetailsComponent implements OnInit {
     }
   }
 
-  
+
   routeToQuestionListWithTagRefresh(){
     let currentUrl ='/question/details?objectId=' +this.question.id;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -527,7 +545,7 @@ export class QuestionDetailsComponent implements OnInit {
   createReportIssueHandle(issueReport) {
     this.reportIssue.issue = issueReport;
     this.reportIssue.paperId = this.question.id;
-    this.reportIssue.videoId = this.question.answerList[0].id;
+    // this.reportIssue.videoId = this.question.answerList[0].id;
     this.reportIssue.title = this.question.title;
     this.reportIssue.creatorDisplayName = this.question.creatorDisplayName;
     this.reportIssue.questionStatus = this.question.questionStatus;
@@ -541,6 +559,7 @@ export class QuestionDetailsComponent implements OnInit {
         (res: any) => {
           if (res && res.id) {
             this.reportIssueCheck = true;
+            this.routeToQuestionListWithTagRefresh();
             $('#closeReportModel').click();
             this.notifier.notify(
               'success',

@@ -14,7 +14,7 @@ public interface ReportIssueDao {
 
     Boolean delete(String id) throws CustomException;
 
-    ReportIssue getOne(String id) throws CustomException;
+    List<ReportIssue> getOneList(String id) throws CustomException;
 
     ReportIssue getOneByAnswerId(String answerId) throws CustomException;
 
@@ -24,3 +24,4 @@ public interface ReportIssueDao {
 
     ReportIssue findByQuestionId(String qId) throws CustomException;
 }
+

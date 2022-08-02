@@ -11,9 +11,9 @@ import org.springframework.data.annotation.Transient;
 import java.util.Set;
 
 /**
- * @author Parvin at 2021-06-17
- * email: 
- * 
+ * @author MjImani at 2021-06-17
+ * email : mjimani.ir@gmail.com
+ * phone : +989191414931
  */
 @Setter
 @Getter
@@ -28,7 +28,7 @@ public class Answer extends GeneralDomain {
     public final static String ENTITY_NAME = "answers";
 
     public enum FN {
-        body, isBestAnswer, usefulCount, participatingIdList, videoLink, creatorDisplayName, authorCheck
+        body, isBestAnswer, usefulCount, participatingIdList, videoLink, creatorDisplayName, authorCheck, bugReport
     }
 
     private String body;
@@ -47,6 +47,8 @@ public class Answer extends GeneralDomain {
 
     private Boolean authorCheck;
 
+    private String bugReport;
+
     public void validation() throws CustomException {
         if (videoLink != null && !videoLink.isEmpty()) {
             if (!videoLink.startsWith("https://www.youtube-nocookie")) {
@@ -56,3 +58,4 @@ public class Answer extends GeneralDomain {
 
     }
 }
+

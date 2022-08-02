@@ -23,7 +23,7 @@ public interface ReportIssueResource {
     ResponseEntity<ResGeneralDto> delete(@PathVariable String id) throws CustomException;
 
     @GetMapping("{id}")
-    ResponseEntity<ReportIssue> getOne(@PathVariable String id) throws CustomException;
+    ResponseEntity<List<ReportIssue>> getOneList(@PathVariable String id) throws CustomException;
 
     @GetMapping()
     ResponseEntity<List<ReportIssue>> getList(Authentication authentication) throws CustomException;

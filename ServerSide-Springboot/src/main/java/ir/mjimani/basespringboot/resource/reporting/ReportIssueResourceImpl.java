@@ -60,13 +60,13 @@ public class ReportIssueResourceImpl implements ReportIssueResource{
     }
 
     @Override
-    public ResponseEntity<ReportIssue> getOne(String id) throws CustomException {
+    public ResponseEntity<List<ReportIssue>> getOneList(String id) throws CustomException {
         // Validation
-        ReportIssue reportIssue = reportIssueService.getOne(id);
+        List<ReportIssue> reportIssue = reportIssueService.getOneList(id);
         if (reportIssue != null) {
             return ResponseEntity.ok().body(reportIssue);
         } else {
-            return ResponseEntity.ok().body(new ReportIssue());
+            return ResponseEntity.ok().body(new ArrayList<ReportIssue>());
 //            throw new CustomException("Not found entity", 406);
         }
     }

@@ -87,7 +87,7 @@ public class BasicQuery<T> extends CustomMongoTemplate<T> {
                 Criteria c = new Criteria().andOperator(c1, Criteria.where("usefulCount").gt(0));
                 return this.find(query.addCriteria(c).with(Sort.by(Sort.Direction.DESC, "usefulCount")), entityClass);
             }else if(liked.equalsIgnoreCase("likeWithVideo")) {
-                Criteria c = new Criteria().andOperator(c1, Criteria.where("usefulCount").gt(0),Criteria.where("questionStatus").is("WITHPRESENTATION"));
+                Criteria c = new Criteria().andOperator(c1,Criteria.where("questionStatus").is("WITHPRESENTATION"));
                 return this.find(query.addCriteria(c).with(Sort.by(Sort.Direction.DESC, "usefulCount")), entityClass);
             }
         } catch (Exception e) {
@@ -107,7 +107,7 @@ public class BasicQuery<T> extends CustomMongoTemplate<T> {
                 query = Query.query(c);
             }
             else if(liked.equalsIgnoreCase("likeWithVideo")) {
-                Criteria c = new Criteria().andOperator(c1,Criteria.where("usefulCount").gt(0),Criteria.where("questionStatus").is("WITHPRESENTATION"));
+                Criteria c = new Criteria().andOperator(c1,Criteria.where("questionStatus").is("WITHPRESENTATION"));
                 query = Query.query(c);
             }
             return this.count(query, entityClass);
@@ -165,28 +165,28 @@ public class BasicQuery<T> extends CustomMongoTemplate<T> {
             throw new CustomException("Please try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
 
     public CommonQuery<T> exists(Object field, Boolean value) {
-    	query.addCriteria(Criteria.where(field.toString()).exists(value));
+        query.addCriteria(Criteria.where(field.toString()).exists(value));
         return createCommonQuery(entityClass);
     }
-    
+
     public CommonQuery<T> is(Object field, Object value) {
         query.addCriteria(Criteria.where(field.toString()).is(value));
         return createCommonQuery(entityClass);
     }
-    
+
     public CommonQuery<T> all(Object field, Object... value) {
         query.addCriteria(Criteria.where(field.toString()).all(value));
         return createCommonQuery(entityClass);
     }
-    
-	public CommonQuery<T> elementMatching(Object field, Object field2, int position, List<ObjectId> objectIds) {
-		query.addCriteria(Criteria.where(field2.toString()).in(objectIds));
-		//query.fields().position(field.toString(), position);
-		return createCommonQuery(this.entityClass);
-	}
+
+    public CommonQuery<T> elementMatching(Object field, Object field2, int position, List<ObjectId> objectIds) {
+        query.addCriteria(Criteria.where(field2.toString()).in(objectIds));
+        //query.fields().position(field.toString(), position);
+        return createCommonQuery(this.entityClass);
+    }
 
     public CommonQuery<T> gt(Object field, Object value) {
         query.addCriteria(Criteria.where(field.toString()).gt(value));
@@ -213,7 +213,7 @@ public class BasicQuery<T> extends CustomMongoTemplate<T> {
             throw new CustomException("Please try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
     public Boolean delete() throws CustomException {
         try {
             return deleteResultBoolean(this.remove(query, entityClass));
@@ -263,7 +263,7 @@ public class BasicQuery<T> extends CustomMongoTemplate<T> {
         query = TextQuery.queryText(criteria).sortByScore();
         return createCommonQuery(this.entityClass);
     }
-    
+
     public CommonQuery<T> regex(Object field, Object value) {
         query.addCriteria(Criteria.where(field.toString()).regex(value.toString(), "i"));
         return createCommonQuery(this.entityClass);
